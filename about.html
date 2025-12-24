@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Boosted</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root { 
+            --accent: #FF2D55; 
+            --bg: #050505; 
+            --card: #121212; 
+            --text-secondary: #a0a0a0;
+        }
+
+        body { 
+            background-color: var(--bg); 
+            color: #fff; 
+            font-family: 'Inter', sans-serif; 
+            margin: 0; 
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* Navigation (Unified) */
+        nav { 
+            padding: 20px; 
+            display: flex; 
+            justify-content: center; 
+            gap: 30px; 
+            background: rgba(0,0,0,0.8); 
+            backdrop-filter: blur(15px);
+            position: sticky; 
+            top: 0; 
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        nav a { 
+            color: #fff; 
+            text-decoration: none; 
+            font-weight: 600; 
+            font-size: 0.85rem; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            transition: 0.3s;
+        }
+
+        nav a:hover { color: var(--accent); }
+
+        /* Header */
+        .about-header {
+            padding: 120px 20px 60px;
+            text-align: center;
+            background: radial-gradient(circle at top, #2a0a10 0%, #050505 70%);
+        }
+
+        .about-header h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 900;
+            letter-spacing: -3px;
+            margin: 0;
+            text-transform: uppercase;
+            background: linear-gradient(to bottom, #fff, #888);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Mission Content */
+        .mission-section {
+            max-width: 800px;
+            margin: 0 auto 60px;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .mission-label {
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 800;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .mission-section p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+
+        /* Values Grid */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            max-width: 1100px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+
+        .value-card {
+            background: var(--card);
+            padding: 40px;
+            border-radius: 32px; /* Unified Squircle Radius */
+            border: 1px solid rgba(255,255,255,0.05);
+            text-align: left;
+            transition: 0.3s ease;
+        }
+
+        .value-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .value-card h3 {
+            color: var(--accent);
+            margin-top: 0;
+            font-size: 1.3rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .value-card p {
+            color: #888;
+            font-size: 1rem;
+            margin-bottom: 0;
+            line-height: 1.6;
+        }
+
+        /* Footer (Unified) */
+        footer { 
+            padding: 80px 20px; 
+            text-align: center; 
+            border-top: 1px solid #1a1a1a; 
+            font-size: 0.85rem; 
+            color: #444; 
+        }
+
+        .footer-socials {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .footer-socials a {
+            color: #666;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.75rem;
+            transition: 0.3s;
+        }
+
+        .footer-socials a:hover {
+            color: var(--accent);
+        }
+
+        .llc-name {
+            color: #eee;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="applications.html">Apps</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <header class="about-header">
+        <h1>Our Story</h1>
+    </header>
+
+    <main class="mission-section">
+        <span class="mission-label">The Mission</span>
+        <p>
+            Boosted was born from a simple frustration: automotive culture is thriving, but the information connecting us is scattered across dead forums and social media noise.
+        </p>
+        <p>
+            We set out to build a centralized digital heartbeat for the community. A place where every enthusiast—from JDM purists to American Muscle collectors—can find their crew and fuel their passion without the static.
+        </p>
+    </main>
+
+    <section class="values-grid">
+        <div class="value-card">
+            <h3>Community First</h3>
+            <p>We build tools specifically designed for the way car enthusiasts interact, organize, and host events.</p>
+        </div>
+        <div class="value-card">
+            <h3>Modern Access</h3>
+            <p>No more digging through old threads. Real-time maps and instant notifications keep you in the loop.</p>
+        </div>
+        <div class="value-card">
+            <h3>Inclusive Culture</h3>
+            <p>Whether it's a local coffee meet or a massive rally, Boosted is home for everything on wheels.</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-socials">
+            <a href="#">Instagram</a>
+            <a href="#">TikTok</a>
+            <a href="#">X</a>
+        </div>
+        <span class="llc-name">BOOSTED PLATFORMS LLC</span><br>
+        &copy; 2025 All rights reserved. <br><br>
+        <a href="applications.html" style="color: #444; text-decoration: none;">Privacy Policy</a> &bull; 
+        <a href="applications.html" style="color: #444; text-decoration: none;">Terms of Service</a>
+    </footer>
+
+</body>
+</html>
