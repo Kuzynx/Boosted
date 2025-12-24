@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Boosted</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root { 
+            --accent: #FF2D55; 
+            --bg: #050505; 
+            --card: #121212; 
+            --text-secondary: #a0a0a0;
+        }
+
+        body { 
+            background-color: var(--bg); 
+            color: #fff; 
+            font-family: 'Inter', sans-serif; 
+            margin: 0; 
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Navigation (Unified) */
+        nav { 
+            padding: 20px; 
+            display: flex; 
+            justify-content: center; 
+            gap: 30px; 
+            background: rgba(0,0,0,0.8); 
+            backdrop-filter: blur(15px);
+            position: sticky; 
+            top: 0; 
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        nav a { 
+            color: #fff; 
+            text-decoration: none; 
+            font-weight: 600; 
+            font-size: 0.85rem; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            transition: 0.3s;
+        }
+
+        nav a:hover { color: var(--accent); }
+
+        /* Support Hero */
+        .support-hero {
+            padding: 120px 20px 60px;
+            text-align: center;
+            background: radial-gradient(circle at top, #2a0a10 0%, #050505 70%);
+        }
+
+        .support-hero h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 900;
+            letter-spacing: -3px;
+            margin: 0;
+            text-transform: uppercase;
+            background: linear-gradient(to bottom, #fff, #888);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .support-hero p {
+            color: var(--accent);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.9rem;
+            margin-top: 15px;
+        }
+
+        /* Contact Grid */
+        .contact-container {
+            max-width: 1100px;
+            margin: 0 auto 120px;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .contact-card {
+            background: var(--card);
+            padding: 60px 45px;
+            border-radius: 32px; /* Unified squircle radius */
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .contact-card:hover {
+            border-color: var(--accent);
+            background: #181818;
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .contact-card h3 {
+            color: #fff;
+            font-size: 1.6rem;
+            margin: 0 0 10px 0;
+            font-weight: 800;
+        }
+
+        .contact-card .subtitle {
+            color: #555;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            margin-bottom: 25px;
+            display: block;
+        }
+
+        .contact-link {
+            display: inline-block;
+            color: var(--accent);
+            font-size: 1.25rem;
+            font-weight: 700;
+            text-decoration: none;
+            margin-bottom: 25px;
+            word-break: break-all;
+            transition: 0.2s;
+        }
+
+        .contact-link:hover {
+            filter: brightness(1.2);
+            text-decoration: underline;
+        }
+
+        .contact-card p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* Footer (Unified) */
+        footer { 
+            padding: 80px 20px; 
+            text-align: center; 
+            border-top: 1px solid #1a1a1a; 
+            font-size: 0.85rem; 
+            color: #444; 
+        }
+
+        .footer-socials {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .footer-socials a {
+            color: #666;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.75rem;
+            transition: 0.3s;
+        }
+
+        .footer-socials a:hover {
+            color: var(--accent);
+        }
+
+        .llc-name {
+            color: #eee;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="applications.html">Apps</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="support-hero">
+        <h1>Support</h1>
+        <p>Boosted Platforms LLC</p>
+    </div>
+
+    <main class="contact-container">
+        <div class="contact-card">
+            <span class="subtitle">Official Channel</span>
+            <h3>Email</h3>
+            <a href="mailto:boostedplatforms@gmail.com" class="contact-link">boostedplatforms@gmail.com</a>
+            <p>Direct access for technical support, partnership inquiries, and bug reporting. Response time is typically within 24 hours.</p>
+        </div>
+
+        <div class="contact-card">
+            <span class="subtitle">Direct Line</span>
+            <h3>Phone & SMS</h3>
+            <a href="tel:7606292136" class="contact-link">(760) 629-2136</a>
+            <p>For urgent meet assistance or media inquiries. Available Monday through Friday, 9:00 AM — 5:00 PM PST.</p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-socials">
+            <a href="#">Instagram</a>
+            <a href="#">TikTok</a>
+            <a href="#">X</a>
+        </div>
+        <span class="llc-name">BOOSTED PLATFORMS LLC</span><br>
+        &copy; 2025 All rights reserved. <br><br>
+        <a href="applications.html">Privacy Policy</a> &bull; <a href="applications.html">Terms of Service</a>
+    </footer>
+
+</body>
+</html>
