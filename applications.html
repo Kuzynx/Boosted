@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applications | Boosted</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root { 
+            --accent: #FF2D55; 
+            --bg: #050505; 
+            --card: #121212; 
+            --text-secondary: #a0a0a0;
+        }
+
+        body { 
+            background-color: var(--bg); 
+            color: #fff; 
+            font-family: 'Inter', sans-serif; 
+            margin: 0; 
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation (Unified) */
+        nav { 
+            padding: 20px; 
+            display: flex; 
+            justify-content: center; 
+            gap: 30px; 
+            background: rgba(0,0,0,0.8); 
+            backdrop-filter: blur(15px);
+            position: sticky; 
+            top: 0; 
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        nav a { 
+            color: #fff; 
+            text-decoration: none; 
+            font-weight: 600; 
+            font-size: 0.85rem; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            transition: 0.3s;
+        }
+
+        nav a:hover { color: var(--accent); }
+
+        /* Page Header */
+        .page-header {
+            padding: 120px 20px 60px;
+            text-align: center;
+            background: radial-gradient(circle at top, #2a0a10 0%, #050505 70%);
+        }
+
+        .page-header h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 900;
+            letter-spacing: -3px;
+            margin: 0;
+            text-transform: uppercase;
+            background: linear-gradient(to bottom, #fff, #888);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* App Showcase Card */
+        .app-showcase {
+            max-width: 1100px;
+            margin: 0 auto 100px;
+            padding: 0 20px;
+        }
+
+        .app-card {
+            background: var(--card);
+            border-radius: 40px;
+            border: 1px solid rgba(255,255,255,0.05);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            overflow: hidden;
+            align-items: center;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+        }
+
+        .app-content { padding: 60px; }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 45, 85, 0.1);
+            color: var(--accent);
+            padding: 8px 16px;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255, 45, 85, 0.2);
+        }
+
+        .status-dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 10px var(--accent); }
+
+        .app-content h2 { font-size: 3rem; margin: 0 0 20px 0; font-weight: 900; letter-spacing: -1.5px; }
+
+        .app-content p { color: var(--text-secondary); font-size: 1.15rem; margin-bottom: 40px; max-width: 450px; }
+
+        .feature-list { list-style: none; padding: 0; margin: 0; }
+        .feature-list li { display: flex; align-items: center; gap: 15px; margin-bottom: 18px; color: #fff; font-weight: 500; }
+        .feature-list li::before { content: '✓'; color: var(--accent); font-weight: 900; font-size: 1.1rem; }
+
+        .app-visual {
+            background: linear-gradient(135deg, #1a1a1a 0%, #000 100%);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-left: 1px solid rgba(255,255,255,0.05);
+            min-height: 500px;
+            position: relative;
+        }
+
+        .icon-container {
+            position: relative;
+            padding: 5px;
+            background: #000;
+            border-radius: 44px; /* Proportional to icon size */
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+        }
+
+        .visual-placeholder { 
+            width: 180px; 
+            height: 180px; 
+            border-radius: 40px; /* App Store Squircle */
+            display: block; 
+            object-fit: cover; 
+            filter: drop-shadow(0 0 15px rgba(255, 45, 85, 0.1));
+        }
+
+        /* Compliance & Legal */
+        .legal-footer {
+            text-align: center;
+            padding: 60px 20px 120px;
+            border-top: 1px solid #1a1a1a;
+        }
+
+        .legal-footer h3 {
+            color: #444;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+        }
+
+        .legal-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .legal-link-card {
+            background: #111;
+            padding: 18px 35px;
+            border-radius: 14px;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.9rem;
+            border: 1px solid #222;
+            transition: all 0.3s ease;
+        }
+
+        .legal-link-card:hover {
+            border-color: var(--accent);
+            background: #180508;
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(255, 45, 85, 0.1);
+        }
+
+        /* Footer (Unified) */
+        footer { 
+            padding: 80px 20px; 
+            text-align: center; 
+            border-top: 1px solid #1a1a1a; 
+            font-size: 0.85rem; 
+            color: #444; 
+        }
+
+        .footer-socials {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .footer-socials a {
+            color: #666;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.75rem;
+            transition: 0.3s;
+        }
+
+        .footer-socials a:hover {
+            color: var(--accent);
+        }
+
+        .llc-name {
+            color: #eee;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 900px) {
+            .app-card { grid-template-columns: 1fr; }
+            .app-content { padding: 40px; text-align: center; }
+            .app-content p { margin: 0 auto 40px; }
+            .feature-list { display: inline-block; text-align: left; }
+            .app-visual { border-left: none; border-top: 1px solid rgba(255,255,255,0.05); min-height: 400px;}
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="applications.html">Apps</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <header class="page-header">
+        <h1>The Ecosystem</h1>
+    </header>
+
+    <main class="app-showcase">
+        <div class="app-card">
+            <div class="app-content">
+                <div class="status-badge"><div class="status-dot"></div>Beta Release • 2025</div>
+                <h2>Boosted</h2>
+                <p>The definitive automotive hub. Connecting local scenes through real-time maps and verified events.</p>
+                <ul class="feature-list">
+                    <li>Real-time Discovery Map</li>
+                    <li>Digital Build Specs</li>
+                    <li>Verified Event Management</li>
+                    <li>Community Crew Messaging</li>
+                </ul>
+            </div>
+            
+            <div class="app-visual">
+                <div class="icon-container">
+                    <img src="turbo-logo.png" alt="Boosted Icon" class="visual-placeholder">
+                </div>
+                <p style="color: #444; font-size: 0.7rem; margin-top: 20px; text-transform: uppercase; letter-spacing: 1px;">Preview Build</p>
+            </div>
+        </div>
+    </main>
+
+    <section class="legal-footer">
+        <h3>Compliance & Legal</h3>
+        <div class="legal-links">
+            <a href="https://app.termly.io/policy-viewer/policy.html?policyUUID=162e6f97-2807-4381-bfc6-731c53833011" target="_blank" class="legal-link-card">Privacy Policy</a>
+            <a href="https://app.termly.io/policy-viewer/policy.html?policyUUID=b0fa91fa-14d7-43f0-bbd0-9d790932d02e" target="_blank" class="legal-link-card">Terms & Conditions</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-socials">
+            <a href="#">Instagram</a>
+            <a href="#">TikTok</a>
+            <a href="#">X</a>
+        </div>
+        <span class="llc-name">BOOSTED PLATFORMS LLC</span><br>
+        &copy; 2025 All rights reserved.
+    </footer>
+
+</body>
+</html>
