@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boosted | Car Meets & Culture</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root { 
+            --accent: #FF2D55; 
+            --bg: #050505; 
+            --card: #121212; 
+            --text-secondary: #a0a0a0;
+        }
+
+        body { 
+            background-color: var(--bg); 
+            color: #fff; 
+            font-family: 'Inter', sans-serif; 
+            margin: 0; 
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav { 
+            padding: 20px; 
+            display: flex; 
+            justify-content: center; 
+            gap: 30px; 
+            background: rgba(0,0,0,0.8); 
+            backdrop-filter: blur(15px);
+            position: sticky; 
+            top: 0; 
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        nav a { 
+            color: #fff; 
+            text-decoration: none; 
+            font-weight: 600; 
+            font-size: 0.85rem; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            transition: 0.3s;
+        }
+
+        nav a:hover { color: var(--accent); }
+
+        /* Hero Section */
+        .hero { 
+            padding: 120px 20px; 
+            text-align: center; 
+            background: radial-gradient(circle at top, #2a0a10 0%, #050505 60%); 
+        }
+
+        .turbo-logo { 
+            width: 140px; 
+            height: 140px; 
+            margin: 0 auto 30px; 
+            /* App Store Icon Rounding */
+            border-radius: 32px;
+            background-color: #000;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            filter: drop-shadow(0 0 20px rgba(255, 45, 85, 0.4));
+            animation: pulse 4s infinite ease-in-out;
+            display: block;
+            object-fit: cover;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        h1 { 
+            font-size: clamp(3rem, 10vw, 6rem); 
+            margin: 0; 
+            font-weight: 900;
+            letter-spacing: -4px; 
+            text-transform: uppercase;
+            background: linear-gradient(to bottom, #fff, #888);
+            -webkit-background-clip: text;
+            background-clip: text; 
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p { 
+            color: var(--text-secondary); 
+            font-size: 1.25rem; 
+            max-width: 600px; 
+            margin: 20px auto 40px; 
+        }
+
+        .cta-btn { 
+            background: var(--accent); 
+            color: #fff; 
+            padding: 20px 50px; 
+            border-radius: 50px; 
+            text-decoration: none; 
+            font-weight: 800; 
+            display: inline-block; 
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(255, 45, 85, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-btn:hover { 
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 45, 85, 0.5);
+        }
+
+        /* Features Section */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto 100px;
+            padding: 0 20px;
+        }
+
+        .feature-card {
+            background: var(--card);
+            padding: 40px;
+            border-radius: 24px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: 0.3s;
+        }
+
+        .feature-card:hover {
+            border-color: var(--accent);
+            background: #1a1a1a;
+            transform: translateY(-5px);
+        }
+
+        .feature-card h3 { 
+            color: var(--accent); 
+            margin-top: 0; 
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+        
+        .feature-card p { 
+            color: #777; 
+            font-size: 0.95rem; 
+            margin-bottom: 0; 
+        }
+
+        /* Footer */
+        footer { 
+            padding: 80px 20px; 
+            text-align: center; 
+            border-top: 1px solid #1a1a1a; 
+            font-size: 0.85rem; 
+            color: #444; 
+        }
+
+        .footer-socials {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .footer-socials a {
+            color: #666;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.75rem;
+            transition: 0.3s;
+        }
+
+        .footer-socials a:hover {
+            color: var(--accent);
+        }
+
+        .llc-name {
+            color: #eee;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="applications.html">Apps</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <section class="hero">
+        <img src="turbo-logo.png" alt="Turbo Icon" class="turbo-logo">
+        
+        <h1>BOOSTED</h1>
+        <p>The digital heartbeat of automotive culture. Discover local meets, host events, and find your crew.</p>
+        <a href="applications.html" class="cta-btn">Download for iOS</a>
+    </section>
+
+    <section class="features">
+        <div class="feature-card">
+            <h3>Find Meets</h3>
+            <p>Real-time map showing the hottest car meets and rallies in your area.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Showcase</h3>
+            <p>Build your virtual garage and share your build specs with the community.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Connect</h3>
+            <p>Join local chapters and chat with owners who share your passion.</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-socials">
+            <a href="#">Instagram</a>
+            <a href="#">TikTok</a>
+            <a href="#">X</a>
+        </div>
+        <span class="llc-name">BOOSTED PLATFORMS LLC</span><br>
+        &copy; 2025 All rights reserved. <br><br>
+        <a href="applications.html">Privacy Policy</a> &bull; <a href="applications.html">Terms of Service</a>
+    </footer>
+
+</body>
+</html>
