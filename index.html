@@ -1,14 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boosted | Car Meets & Culture</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="icon" type="image/png" href="turbo-logo.png">
-    <link rel="apple-touch-icon" href="turbo-logo.png">
+    <!-- Primary SEO -->
+    <title>Boosted — Car Meets, Builds & Automotive Culture</title>
+    <meta name="description" content="Boosted is the social platform for car meets, builds, and automotive culture. Discover local meets, showcase your build, and connect with enthusiasts." />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://boostedapp.org/" />
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- Google Search Console Verification -->
+    <!-- PASTE GOOGLE META TAG HERE WHEN PROVIDED -->
+    <!-- <meta name="google-site-verification" content="XXXXXXXXXXXX" /> -->
+
+    <!-- Favicon / App Icons -->
+    <link rel="icon" type="image/png" href="turbo-logo.png" />
+    <link rel="apple-touch-icon" href="turbo-logo.png" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Boosted — Car Meets & Culture" />
+    <meta property="og:description" content="The digital heartbeat of automotive culture. Find meets, post builds, and connect with your crew." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://boostedapp.org/" />
+    <meta property="og:image" content="https://boostedapp.org/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Boosted — Car Meets & Culture" />
+    <meta name="twitter:description" content="Find meets. Share builds. Build culture." />
+    <meta name="twitter:image" content="https://boostedapp.org/og-image.png" />
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet" />
+
     <style>
         :root { 
             --accent: #FF2D55; 
@@ -26,13 +53,12 @@
             line-height: 1.6;
         }
 
-        /* Navigation */
         nav { 
             padding: 20px; 
             display: flex; 
             justify-content: center; 
             gap: 30px; 
-            background: rgba(0,0,0,0.8); 
+            background: rgba(0,0,0,0.85); 
             backdrop-filter: blur(15px);
             position: sticky; 
             top: 0; 
@@ -52,7 +78,6 @@
 
         nav a:hover { color: var(--accent); }
 
-        /* Hero Section */
         .hero { 
             padding: 120px 20px; 
             text-align: center; 
@@ -63,7 +88,6 @@
             width: 140px; 
             height: 140px; 
             margin: 0 auto 30px; 
-            /* App Store Icon Rounding */
             border-radius: 32px;
             background-color: #000;
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -86,7 +110,6 @@
             text-transform: uppercase;
             background: linear-gradient(to bottom, #fff, #888);
             -webkit-background-clip: text;
-            background-clip: text; 
             -webkit-text-fill-color: transparent;
         }
 
@@ -105,7 +128,7 @@
             text-decoration: none; 
             font-weight: 800; 
             display: inline-block; 
-            transition: all 0.3s;
+            transition: 0.3s;
             box-shadow: 0 10px 30px rgba(255, 45, 85, 0.3);
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -116,7 +139,6 @@
             box-shadow: 0 15px 40px rgba(255, 45, 85, 0.5);
         }
 
-        /* Features Section */
         .features {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -140,20 +162,6 @@
             transform: translateY(-5px);
         }
 
-        .feature-card h3 { 
-            color: var(--accent); 
-            margin-top: 0; 
-            font-size: 1.5rem;
-            font-weight: 800;
-        }
-        
-        .feature-card p { 
-            color: #777; 
-            font-size: 0.95rem; 
-            margin-bottom: 0; 
-        }
-
-        /* Footer */
         footer { 
             padding: 80px 20px; 
             text-align: center; 
@@ -161,76 +169,42 @@
             font-size: 0.85rem; 
             color: #444; 
         }
-
-        .footer-socials {
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .footer-socials a {
-            color: #666;
-            text-decoration: none;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.75rem;
-            transition: 0.3s;
-        }
-
-        .footer-socials a:hover {
-            color: var(--accent);
-        }
-
-        .llc-name {
-            color: #eee;
-            font-weight: 800;
-            letter-spacing: 1px;
-        }
     </style>
 </head>
-<body>
 
+<body>
     <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="applications.html">Apps</a>
-        <a href="contact.html">Contact</a>
+        <a href="/">Home</a>
+        <a href="/about.html">About</a>
+        <a href="/applications.html">Apps</a>
+        <a href="/contact.html">Contact</a>
     </nav>
 
     <section class="hero">
-        <img src="turbo-logo.png" alt="Turbo Icon" class="turbo-logo">
-        
+        <img src="turbo-logo.png" alt="Boosted App Icon" class="turbo-logo" />
         <h1>BOOSTED</h1>
         <p>The digital heartbeat of automotive culture. Discover local meets, host events, and find your crew.</p>
-        <a href="applications.html" class="cta-btn">Download for iOS</a>
+        <a href="/applications.html" class="cta-btn">Download for iOS</a>
     </section>
 
     <section class="features">
         <div class="feature-card">
             <h3>Find Meets</h3>
-            <p>Real-time map showing the hottest car meets and rallies in your area.</p>
+            <p>Discover real-time car meets, cruises, and rallies near you.</p>
         </div>
         <div class="feature-card">
-            <h3>Showcase</h3>
-            <p>Build your virtual garage and share your build specs with the community.</p>
+            <h3>Showcase Builds</h3>
+            <p>Create a digital garage and show off your setup.</p>
         </div>
         <div class="feature-card">
             <h3>Connect</h3>
-            <p>Join local chapters and chat with owners who share your passion.</p>
+            <p>Join local crews and talk with enthusiasts who get it.</p>
         </div>
     </section>
 
     <footer>
-        <div class="footer-socials">
-            <a href="https://www.instagram.com/boosted_platforms?igsh=NTc4MTIwNjQ2YQ==">Instagram</a>
-            <a href="https://www.tiktok.com/@boostedplatforms?_r=1&_t=ZT-92TZxG6OG0N">TikTok</a>
-        </div>
-        <span class="llc-name">BOOSTED PLATFORMS LLC</span><br>
-        &copy; 2025 All rights reserved. <br><br>
-        <a href="applications.html">Privacy Policy</a> &bull; <a href="applications.html">Terms of Service</a>
+        <strong>BOOSTED PLATFORMS LLC</strong><br />
+        © 2025 — All rights reserved
     </footer>
-
 </body>
 </html>
