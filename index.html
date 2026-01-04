@@ -11,8 +11,7 @@
     <link rel="canonical" href="https://boostedapp.org/" />
 
     <!-- Google Search Console Verification -->
-    <!-- PASTE GOOGLE META TAG HERE WHEN PROVIDED -->
-    <!-- <meta name="google-site-verification" content="XXXXXXXXXXXX" /> -->
+    <!-- <meta name="google-site-verification" content="PASTE_YOUR_CODE_HERE" /> -->
 
     <!-- Favicon / App Icons -->
     <link rel="icon" type="image/png" href="turbo-logo.png" />
@@ -24,8 +23,6 @@
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://boostedapp.org/" />
     <meta property="og:image" content="https://boostedapp.org/og-image.png" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -169,6 +166,33 @@
             font-size: 0.85rem; 
             color: #444; 
         }
+
+        .footer-socials {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .footer-socials a {
+            color: #666;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.75rem;
+            transition: 0.3s;
+        }
+
+        .footer-socials a:hover {
+            color: var(--accent);
+        }
+
+        .llc-name {
+            color: #eee;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
     </style>
 </head>
 
@@ -203,8 +227,12 @@
     </section>
 
     <footer>
-        <strong>BOOSTED PLATFORMS LLC</strong><br />
-        © 2025 — All rights reserved
+        <div class="footer-socials">
+            <a href="https://www.instagram.com/boosted_platforms?igsh=NTc4MTIwNjQ2YQ==" target="_blank" rel="noopener">Instagram</a>
+            <a href="https://www.tiktok.com/@boostedplatforms?_r=1&_t=ZT-92TZxG6OG0N" target="_blank" rel="noopener">TikTok</a>
+        </div>
+        <span class="llc-name">BOOSTED PLATFORMS LLC</span><br />
+        © 2025 All rights reserved
     </footer>
 </body>
 </html>
