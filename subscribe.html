@@ -102,22 +102,68 @@
 
       <script>
         (function(){
-          var success = document.getElementById('success-message');
-          function observerInit(){
-            if(!success) success = document.getElementById('success-message');
-            if(!success) return;
-            var obs = new MutationObserver(function(){
-              try{
-                var style = window.getComputedStyle(success);
-                if(style && style.display !== 'none' && success.textContent.trim().length){
-                  setTimeout(function(){ window.location.href = '/thank-you.html'; }, 700);
-                  obs.disconnect();
+          // Primary flow: let Brevo handle the form normally.
+          // Fallback: if Brevo embed fails, intercept submit, post to Brevo in a new tab and redirect here to thank-you.
+          var form = document.getElementById('sib-form');
+          if (!form) return;
+
+          form.addEventListener('submit', function(e){
+            try {
+              // Let the default Brevo behaviour run briefly; set a timeout fallback.
+              var handled = false;
+              // If Brevo's JS shows the success panel within 3s, do nothing (observer below handles redirect).
+              var success = document.getElementById('success-message');
+              var obs;
+              function redirectIfSuccess() {
+                try {
+                  var style = window.getComputedStyle(success || {});
+                  if (success && style && style.display !== 'none' && success.textContent.trim().length) {
+                    handled = true;
+                    if (obs) obs.disconnect();
+                    setTimeout(function(){ window.location.href = '/thank-you.html'; }, 600);
+                  }
+                } catch (err) {}
+              }
+              if (success) {
+                obs = new MutationObserver(redirectIfSuccess);
+                obs.observe(success, { attributes:true, childList:true, subtree:true });
+              }
+
+              // After a short delay, if not handled by Brevo, submit manually to Brevo and redirect.
+              setTimeout(function(){
+                if (handled) return;
+                // Grab email value
+                var emailEl = form.querySelector('input[name="EMAIL"]');
+                var email = emailEl && emailEl.value && emailEl.value.trim();
+                if (!email) {
+                  // Allow normal validation to run
+                  return;
                 }
-              }catch(e){}
-            });
-            obs.observe(success, { attributes: true, childList: true, subtree: true });
-          }
-          if(document.readyState==='complete' || document.readyState==='interactive') observerInit(); else document.addEventListener('DOMContentLoaded', observerInit);
+                // Create a temporary form that posts to Brevo in a new tab (bypasses embed JS issues)
+                var f = document.createElement('form');
+                f.method = 'POST';
+                f.action = form.action;
+                f.target = '_blank';
+                f.style.display = 'none';
+
+                var i = document.createElement('input');
+                i.type = 'hidden'; i.name = 'EMAIL'; i.value = email; f.appendChild(i);
+                var l = document.createElement('input');
+                l.type = 'hidden'; l.name = 'locale'; l.value = 'en'; f.appendChild(l);
+
+                document.body.appendChild(f);
+                f.submit();
+                document.body.removeChild(f);
+                // Redirect current page to thank-you
+                window.location.href = '/thank-you.html';
+              }, 3000);
+            } catch (err) {
+              // If anything goes wrong, allow existing manual fallback to handle it
+              console.error('subscribe fallback error', err);
+            }
+          }, { passive: true });
+
+          // Also keep the previous manual submit button handler intact (already present)
         })();
       </script>
       <!-- End Brevo Form -->
