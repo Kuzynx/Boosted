@@ -42,131 +42,10 @@
 
       <!-- Brevo embed (form posts to Brevo) -->
 
-      <!-- Begin Brevo Form -->
-      <style>
-        @font-face{font-display:block;font-family:Roboto;src:url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/7529907e9eaf8ebb5220c5f9850e3811.woff2) format("woff2");}
-        @font-face{font-display:fallback;font-family:Roboto;font-weight:600;src:url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/6e9caeeafb1f3491be3e32744bc30440.woff2) format("woff2");}
-        @font-face{font-display:fallback;font-family:Roboto;font-weight:700;src:url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/3ef7cf158f310cf752d5ad08cd0e7e60.woff2) format("woff2");}
-        #sib-container input::placeholder{color:#c0ccda}
-        #sib-container textarea::placeholder{color:#c0ccda}
-      </style>
-      <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
-
-      <div class="sib-form" style="text-align: left; background-color: transparent;">
-        <div id="sib-form-container" class="sib-form-container">
-          <div id="error-message" class="sib-form-message-panel" style="display:none;">
-            <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
-              <span class="sib-form-message-panel__inner-text">Your subscription could not be saved. Please try again.</span>
-            </div>
-          </div>
-          <div id="success-message" class="sib-form-message-panel" style="display:none;">
-            <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
-              <span class="sib-form-message-panel__inner-text">Your subscription has been successful.</span>
-            </div>
-          </div>
-
-          <div id="sib-container" class="sib-container--large sib-container--vertical" style="background-color:rgba(255,255,255,1); max-width:540px; border-radius:3px; border-width:1px; border-color:#C0CCD9; border-style:solid; direction:ltr; padding:18px;">
-            <form id="sib-form" method="POST" action="https://41418eed.sibforms.com/serve/MUIFALy9KQTfpbwwSC7l9cI-5E1c0DGoUT1dZHwgmiJX4T3MC1DXe-kxSl8WZAyflBbIu6ThzF77tsnEYH5BIIooM2rgYWjNDQ5u_gKNFdlNMIoVyfJY5z10pRwPK_RI3Au3TiUZ55cB05ibnM-L0osMe1r22j2OqG0huHcDLbt6PJbOcLXNTQ3h2ZJ6c09n_Ig_7JBlirWFUH0iBQ==" data-type="subscription">
-
-              <div style="padding:8px 0">
-                <div class="sib-form-block" style="font-size:20px; font-weight:700; color:#3C4858;">Boosted Pre-Launch</div>
-              </div>
-
-              <div style="padding:8px 0">
-                <div class="sib-input sib-form-block">
-                  <div class="form__entry entry_block">
-                    <label class="entry__label" for="EMAIL" style="font-weight:700;">Enter your email address to subscribe</label>
-                    <div class="entry__field">
-                      <input class="input" type="email" id="EMAIL" name="EMAIL" autocomplete="off" placeholder="EMAIL" required />
-                    </div>
-                    <label class="entry__specification" style="font-size:12px;color:#8390A4">Provide your email address to subscribe. For Boosted Platforms LLC</label>
-                  </div>
-                </div>
-              </div>
-
-              <div style="padding:8px 0">
-                <div class="sib-form-block" style="text-align:left">
-                  <button class="sib-form-block__button" type="submit" style="background:#ff2d55;color:#fff;padding:10px 14px;border-radius:4px;border:0;font-weight:700">SUBSCRIBE</button>
-                </div>
-              </div>
-
-              <input type="text" name="email_address_check" value="" class="input--hidden">
-              <input type="hidden" name="locale" value="en">
-            </form>
-          </div>
-        </div>
+      <!-- Embedded Brevo form (iframe) -->
+      <div style="text-align:center; padding:8px 0;">
+        <iframe width="540" height="305" src="https://41418eed.sibforms.com/serve/MUIFALy9KQTfpbwwSC7l9cI-5E1c0DGoUT1dZHwgmiJX4T3MC1DXe-kxSl8WZAyflBbIu6ThzF77tsnEYH5BIIooM2rgYWjNDQ5u_gKNFdlNMIoVyfJY5z10pRwPK_RI3Au3TiUZ55cB05ibnM-L0osMe1r22j2OqG0huHcDLbt6PJbOcLXNTQ3h2ZJ6c09n_Ig_7JBlirWFUH0iBQ==" frameborder="0" scrolling="auto" allowfullscreen style="display:block;margin-left:auto;margin-right:auto;max-width:100%;"></iframe>
       </div>
-
-      <script src="https://sibforms.com/forms/end-form/build/main.js" defer></script>
-      <script src="https://www.google.com/recaptcha/api.js?render=6Ldec3ssAAAAAG6J2sHXokafzjUKEPB5COF2u-TJ&hl=en" async defer></script>
-
-      <script>
-        (function(){
-          // Primary flow: let Brevo handle the form normally.
-          // Fallback: if Brevo embed fails, intercept submit, post to Brevo in a new tab and redirect here to thank-you.
-          var form = document.getElementById('sib-form');
-          if (!form) return;
-
-          form.addEventListener('submit', function(e){
-            try {
-              // Let the default Brevo behaviour run briefly; set a timeout fallback.
-              var handled = false;
-              // If Brevo's JS shows the success panel within 3s, do nothing (observer below handles redirect).
-              var success = document.getElementById('success-message');
-              var obs;
-              function redirectIfSuccess() {
-                try {
-                  var style = window.getComputedStyle(success || {});
-                  if (success && style && style.display !== 'none' && success.textContent.trim().length) {
-                    handled = true;
-                    if (obs) obs.disconnect();
-                    setTimeout(function(){ window.location.href = '/thank-you.html'; }, 600);
-                  }
-                } catch (err) {}
-              }
-              if (success) {
-                obs = new MutationObserver(redirectIfSuccess);
-                obs.observe(success, { attributes:true, childList:true, subtree:true });
-              }
-
-              // After a short delay, if not handled by Brevo, submit manually to Brevo and redirect.
-              setTimeout(function(){
-                if (handled) return;
-                // Grab email value
-                var emailEl = form.querySelector('input[name="EMAIL"]');
-                var email = emailEl && emailEl.value && emailEl.value.trim();
-                if (!email) {
-                  // Allow normal validation to run
-                  return;
-                }
-                // Create a temporary form that posts to Brevo in a new tab (bypasses embed JS issues)
-                var f = document.createElement('form');
-                f.method = 'POST';
-                f.action = form.action;
-                f.target = '_blank';
-                f.style.display = 'none';
-
-                var i = document.createElement('input');
-                i.type = 'hidden'; i.name = 'EMAIL'; i.value = email; f.appendChild(i);
-                var l = document.createElement('input');
-                l.type = 'hidden'; l.name = 'locale'; l.value = 'en'; f.appendChild(l);
-
-                document.body.appendChild(f);
-                f.submit();
-                document.body.removeChild(f);
-                // Redirect current page to thank-you
-                window.location.href = '/thank-you.html';
-              }, 3000);
-            } catch (err) {
-              // If anything goes wrong, allow existing manual fallback to handle it
-              console.error('subscribe fallback error', err);
-            }
-          }, { passive: true });
-
-          // Also keep the previous manual submit button handler intact (already present)
-        })();
-      </script>
-      <!-- End Brevo Form -->
 
       <p class="note">If you prefer, you can also <a href="/">return to the homepage</a>.</p>
 
@@ -174,41 +53,11 @@
       <div style="margin-top:8px">
         <p style="margin:0 0 8px;color:#4b5563">Having trouble submitting? Try one of these:</p>
         <div style="display:flex;gap:8px;flex-wrap:wrap">
-          <button id="manual-submit" class="sib-form-block__button" style="background:#0b72ff;color:#fff;padding:10px 14px;border-radius:6px;border:0;font-weight:700">Manual submit (opens new tab)</button>
+          <a id="manual-submit" href="https://41418eed.sibforms.com/serve/MUIFALy9KQTfpbwwSC7l9cI-5E1c0DGoUT1dZHwgmiJX4T3MC1DXe-kxSl8WZAyflBbIu6ThzF77tsnEYH5BIIooM2rgYWjNDQ5u_gKNFdlNMIoVyfJY5z10pRwPK_RI3Au3TiUZ55cB05ibnM-L0osMe1r22j2OqG0huHcDLbt6PJbOcLXNTQ3h2ZJ6c09n_Ig_7JBlirWFUH0iBQ==" target="_blank" class="sib-form-block__button" style="background:#0b72ff;color:#fff;padding:10px 14px;border-radius:6px;border:0;font-weight:700;display:inline-block;text-decoration:none">Open form in new tab</a>
           <a href="mailto:support@boostedapp.org?subject=Subscribe%20to%20Boosted%20Waitlist" style="display:inline-block;padding:10px 14px;border-radius:6px;background:transparent;border:1px solid #d0d7df;color:#0b72ff;text-decoration:none;font-weight:700">Email to subscribe</a>
         </div>
-        <p style="color:#8b98a6;font-size:0.9rem;margin-top:8px">Manual submit will open a new tab and post the email directly to the Brevo endpoint. Use only if the inline form fails.</p>
+        <p style="color:#8b98a6;font-size:0.9rem;margin-top:8px">Use the button to open the hosted form in a new tab if the inline embed doesn't work.</p>
       </div>
-
-      <script>
-        // Manual submit fallback: creates a small form and posts to the Brevo action URL in a new tab.
-        document.getElementById('manual-submit').addEventListener('click', function(){
-          try {
-            var srcForm = document.getElementById('sib-form');
-            if (!srcForm) return alert('Form not found on this page.');
-            var emailInput = srcForm.querySelector('input[name="EMAIL"]');
-            var email = (emailInput && emailInput.value || '').trim();
-            if (!email) return alert('Please enter your email in the form first.');
-
-            var f = document.createElement('form');
-            f.method = 'POST';
-            f.action = srcForm.action;
-            f.target = '_blank';
-            f.style.display = 'none';
-
-            var i = document.createElement('input');
-            i.type = 'hidden'; i.name = 'EMAIL'; i.value = email; f.appendChild(i);
-            var l = document.createElement('input');
-            l.type = 'hidden'; l.name = 'locale'; l.value = 'en'; f.appendChild(l);
-
-            document.body.appendChild(f);
-            f.submit();
-            document.body.removeChild(f);
-          } catch (e) {
-            alert('Manual submit failed — please email support@boostedapp.org to subscribe.');
-          }
-        });
-      </script>
     </div>
   </main>
 </body>
