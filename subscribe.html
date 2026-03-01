@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Subscribe — Boosted</title>
+  <link rel="icon" href="/turbo-logo.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet" />
+  <style>
+    :root{--accent:#FF2D55;--bg:#050505;--card:#0f1113;--muted:#9aa3ac;--glass:rgba(255,255,255,0.04)}
+    html,body{height:100%}
+    body{background:linear-gradient(180deg,#060606 0%, #0b0b0b 60%);color:#fff;font-family:Inter,system-ui,Arial,sans-serif;margin:0;-webkit-font-smoothing:antialiased}
+    nav{padding:18px 20px;display:flex;justify-content:center;gap:28px;background:transparent}
+    nav a{color:#fff;text-decoration:none;font-weight:700;opacity:0.95}
+    .container{max-width:920px;margin:40px auto;padding:20px}
+    .card{background:linear-gradient(180deg,#ffffff 0%, #fbfdff 100%);border-radius:14px;padding:36px;color:#07101a;box-shadow:0 20px 50px rgba(2,6,23,0.6);border:1px solid rgba(2,6,23,0.06)}
+    .card h1{margin:0 0 8px;font-size:1.6rem}
+    .card p{color:var(--muted);margin:6px 0 18px}
+    .note{color:#6c7782;margin-top:12px}
+
+    /* Brevo form tweaks */
+    #sib-container{background:#fff;padding:20px;border-radius:10px}
+    .input{width:100%;padding:12px 14px;border-radius:10px;border:1px solid #e6e9ef;font-size:14px}
+    .sib-form-block__button{background:linear-gradient(90deg,var(--accent),#ff7a9a);color:#fff;border-radius:10px;padding:12px 18px;border:0;font-weight:800;cursor:pointer}
+    .sib-form-block__button:hover{transform:translateY(-2px)}
+    .sib-form-container{display:flex;flex-direction:column;gap:12px}
+    @media (max-width:640px){.container{margin:20px 16px}.card{padding:20px}}
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/about.html">About</a>
+    <a href="/applications.html">Apps</a>
+    <a href="/contact.html">Contact</a>
+  </nav>
+
+  <main class="container">
+    <div class="card">
+      <h1>Join the Boosted Waitlist</h1>
+      <p>Subscribe and stay updated on all things Boosted.</p>
+
+      <!-- Brevo embed (form posts to Brevo) -->
+
+      <!-- Begin Brevo Form -->
+      <style>
+        @font-face{font-display:block;font-family:Roboto;src:url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/7529907e9eaf8ebb5220c5f9850e3811.woff2) format("woff2");}
+        @font-face{font-display:fallback;font-family:Roboto;font-weight:600;src:url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/6e9caeeafb1f3491be3e32744bc30440.woff2) format("woff2");}
+        @font-face{font-display:fallback;font-family:Roboto;font-weight:700;src:url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/3ef7cf158f310cf752d5ad08cd0e7e60.woff2) format("woff2");}
+        #sib-container input::placeholder{color:#c0ccda}
+        #sib-container textarea::placeholder{color:#c0ccda}
+      </style>
+      <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
+
+      <div class="sib-form" style="text-align: left; background-color: transparent;">
+        <div id="sib-form-container" class="sib-form-container">
+          <div id="error-message" class="sib-form-message-panel" style="display:none;">
+            <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
+              <span class="sib-form-message-panel__inner-text">Your subscription could not be saved. Please try again.</span>
+            </div>
+          </div>
+          <div id="success-message" class="sib-form-message-panel" style="display:none;">
+            <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
+              <span class="sib-form-message-panel__inner-text">Your subscription has been successful.</span>
+            </div>
+          </div>
+
+          <div id="sib-container" class="sib-container--large sib-container--vertical" style="background-color:rgba(255,255,255,1); max-width:540px; border-radius:3px; border-width:1px; border-color:#C0CCD9; border-style:solid; direction:ltr; padding:18px;">
+            <form id="sib-form" method="POST" action="https://41418eed.sibforms.com/serve/MUIFALy9KQTfpbwwSC7l9cI-5E1c0DGoUT1dZHwgmiJX4T3MC1DXe-kxSl8WZAyflBbIu6ThzF77tsnEYH5BIIooM2rgYWjNDQ5u_gKNFdlNMIoVyfJY5z10pRwPK_RI3Au3TiUZ55cB05ibnM-L0osMe1r22j2OqG0huHcDLbt6PJbOcLXNTQ3h2ZJ6c09n_Ig_7JBlirWFUH0iBQ==" data-type="subscription">
+
+              <div style="padding:8px 0">
+                <div class="sib-form-block" style="font-size:20px; font-weight:700; color:#3C4858;">Boosted Pre-Launch</div>
+              </div>
+
+              <div style="padding:8px 0">
+                <div class="sib-input sib-form-block">
+                  <div class="form__entry entry_block">
+                    <label class="entry__label" for="EMAIL" style="font-weight:700;">Enter your email address to subscribe</label>
+                    <div class="entry__field">
+                      <input class="input" type="email" id="EMAIL" name="EMAIL" autocomplete="off" placeholder="EMAIL" required />
+                    </div>
+                    <label class="entry__specification" style="font-size:12px;color:#8390A4">Provide your email address to subscribe. For Boosted Platforms LLC</label>
+                  </div>
+                </div>
+              </div>
+
+              <div style="padding:8px 0">
+                <div class="sib-form-block" style="text-align:left">
+                  <button class="sib-form-block__button" type="submit" style="background:#ff2d55;color:#fff;padding:10px 14px;border-radius:4px;border:0;font-weight:700">SUBSCRIBE</button>
+                </div>
+              </div>
+
+              <input type="text" name="email_address_check" value="" class="input--hidden">
+              <input type="hidden" name="locale" value="en">
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <script src="https://sibforms.com/forms/end-form/build/main.js" defer></script>
+      <script src="https://www.google.com/recaptcha/api.js?render=6Ldec3ssAAAAAG6J2sHXokafzjUKEPB5COF2u-TJ&hl=en" async defer></script>
+
+      <script>
+        (function(){
+          var success = document.getElementById('success-message');
+          function observerInit(){
+            if(!success) success = document.getElementById('success-message');
+            if(!success) return;
+            var obs = new MutationObserver(function(){
+              try{
+                var style = window.getComputedStyle(success);
+                if(style && style.display !== 'none' && success.textContent.trim().length){
+                  setTimeout(function(){ window.location.href = '/thank-you.html'; }, 700);
+                  obs.disconnect();
+                }
+              }catch(e){}
+            });
+            obs.observe(success, { attributes: true, childList: true, subtree: true });
+          }
+          if(document.readyState==='complete' || document.readyState==='interactive') observerInit(); else document.addEventListener('DOMContentLoaded', observerInit);
+        })();
+      </script>
+      <!-- End Brevo Form -->
+
+      <p class="note">If you prefer, you can also <a href="/">return to the homepage</a>.</p>
+    </div>
+  </main>
+</body>
+</html>

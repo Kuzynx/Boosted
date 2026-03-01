@@ -193,6 +193,17 @@
             font-weight: 800;
             letter-spacing: 1px;
         }
+        
+        /* Waitlist form & screenshots */
+        .waitlist-form { display: flex; gap: 12px; justify-content: center; align-items: center; margin-top: 20px; }
+        .email-input { padding: 14px 18px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.06); background: #0b0b0b; color: #fff; min-width: 280px; }
+        .email-input::placeholder { color: #777; }
+        .join-btn { background: linear-gradient(90deg, #ff2d55, #ff7a9a); color: #fff; border: none; padding: 14px 22px; border-radius: 12px; font-weight: 800; cursor: pointer; }
+        .join-btn:disabled { opacity: 0.6; cursor: default; }
+        .note { color: var(--text-secondary); font-size: 0.95rem; margin-top: 12px; }
+
+        .screenshots { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; max-width: 1100px; margin: 40px auto 80px; padding: 0 20px; }
+        .screenshot { width: 100%; border-radius: 18px; border: 1px solid rgba(255,255,255,0.04); box-shadow: 0 10px 30px rgba(0,0,0,0.6); background:#000; }
     </style>
 </head>
 
@@ -208,7 +219,13 @@
         <img src="turbo-logo.png" alt="Boosted App Icon" class="turbo-logo" />
         <h1>BOOSTED</h1>
         <p>The digital heartbeat of automotive culture. Discover local meets, host events, and find your crew.</p>
-        <a href="/applications.html" class="cta-btn">Download for iOS(not available yet)</a>
+                <a href="/subscribe.html" class="cta-btn">Join the Waitlist</a>
+    </section>
+
+    <section class="screenshots" aria-label="App screenshots">
+        <img src="https://via.placeholder.com/720x1280?text=Meet+Feed" alt="Meet feed screenshot" class="screenshot" />
+        <img src="https://via.placeholder.com/720x1280?text=Showcase+Build" alt="Showcase build screenshot" class="screenshot" />
+        <img src="https://via.placeholder.com/720x1280?text=Profile+and+Connect" alt="Profile and connect screenshot" class="screenshot" />
     </section>
 
     <section class="features">
@@ -233,6 +250,61 @@
         </div>
         <span class="llc-name">BOOSTED PLATFORMS LLC</span><br />
         © 2025 All rights reserved
+        <div style="margin-top:16px;">
+            <button id="export-btn" class="join-btn" onclick="exportWaitlistCSV()">Export Waitlist (CSV)</button>
+            <button id="clear-btn" class="join-btn" onclick="clearWaitlist()" style="background:#444;margin-left:8px;">Clear Waitlist</button>
+            <div id="export-note" class="note" style="margin-top:8px;">Tip: Download this CSV and import it into Mailchimp Audience → Import Contacts.</div>
+        </div>
     </footer>
+    <script>
+        // Simple client-side waitlist capture (stores emails in localStorage).
+        // Replace this with a real backend or service endpoint for production.
+        function handleWaitlistSubmit(e) {
+            e.preventDefault();
+            var emailEl = document.getElementById('waitlist-email');
+            var email = (emailEl && emailEl.value || '').trim();
+            if (!email) {
+                return false;
+            }
+            try {
+                var key = 'boosted_waitlist';
+                var list = JSON.parse(localStorage.getItem(key) || '[]');
+                if (!list.includes(email)) list.push(email);
+                localStorage.setItem(key, JSON.stringify(list));
+                document.getElementById('waitlist-msg').textContent = 'Thanks — you\u2019re on the waitlist! We\u2019ll email you when we launch.';
+                document.getElementById('join-btn').disabled = true;
+            } catch (err) {
+                document.getElementById('waitlist-msg').textContent = 'Thanks — we received your email.';
+            }
+            return false;
+        }
+
+        // Export stored waitlist to CSV and trigger download
+        function exportWaitlistCSV() {
+            var key = 'boosted_waitlist';
+            var list = JSON.parse(localStorage.getItem(key) || '[]');
+            if (!list || list.length === 0) {
+                alert('No waitlist emails found in localStorage.');
+                return;
+            }
+            var csv = 'email\n' + list.map(function(e){ return '"' + e.replace(/"/g, '""') + '"'; }).join('\n');
+            var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            var url = URL.createObjectURL(blob);
+            var a = document.createElement('a');
+            a.href = url;
+            a.download = 'boosted-waitlist.csv';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        // Clear stored waitlist (useful for testing/admin)
+        function clearWaitlist() {
+            if (!confirm('Clear all waitlist emails from localStorage? This cannot be undone.')) return;
+            localStorage.removeItem('boosted_waitlist');
+            alert('Waitlist cleared.');
+        }
+    </script>
 </body>
 </html>
