@@ -123,6 +123,46 @@
       <!-- End Brevo Form -->
 
       <p class="note">If you prefer, you can also <a href="/">return to the homepage</a>.</p>
+
+      <hr style="border:none;border-top:1px solid #eef2f6;margin:18px 0">
+      <div style="margin-top:8px">
+        <p style="margin:0 0 8px;color:#4b5563">Having trouble submitting? Try one of these:</p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button id="manual-submit" class="sib-form-block__button" style="background:#0b72ff;color:#fff;padding:10px 14px;border-radius:6px;border:0;font-weight:700">Manual submit (opens new tab)</button>
+          <a href="mailto:support@boostedapp.org?subject=Subscribe%20to%20Boosted%20Waitlist" style="display:inline-block;padding:10px 14px;border-radius:6px;background:transparent;border:1px solid #d0d7df;color:#0b72ff;text-decoration:none;font-weight:700">Email to subscribe</a>
+        </div>
+        <p style="color:#8b98a6;font-size:0.9rem;margin-top:8px">Manual submit will open a new tab and post the email directly to the Brevo endpoint. Use only if the inline form fails.</p>
+      </div>
+
+      <script>
+        // Manual submit fallback: creates a small form and posts to the Brevo action URL in a new tab.
+        document.getElementById('manual-submit').addEventListener('click', function(){
+          try {
+            var srcForm = document.getElementById('sib-form');
+            if (!srcForm) return alert('Form not found on this page.');
+            var emailInput = srcForm.querySelector('input[name="EMAIL"]');
+            var email = (emailInput && emailInput.value || '').trim();
+            if (!email) return alert('Please enter your email in the form first.');
+
+            var f = document.createElement('form');
+            f.method = 'POST';
+            f.action = srcForm.action;
+            f.target = '_blank';
+            f.style.display = 'none';
+
+            var i = document.createElement('input');
+            i.type = 'hidden'; i.name = 'EMAIL'; i.value = email; f.appendChild(i);
+            var l = document.createElement('input');
+            l.type = 'hidden'; l.name = 'locale'; l.value = 'en'; f.appendChild(l);
+
+            document.body.appendChild(f);
+            f.submit();
+            document.body.removeChild(f);
+          } catch (e) {
+            alert('Manual submit failed — please email support@boostedapp.org to subscribe.');
+          }
+        });
+      </script>
     </div>
   </main>
 </body>
