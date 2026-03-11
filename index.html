@@ -135,6 +135,16 @@
             transform: translateY(-3px);
             box-shadow: 0 15px 40px rgba(255, 45, 85, 0.5);
         }
+        .cta-secondary { 
+            background: transparent; 
+            color: #fff; 
+            border: 1px solid rgba(255,255,255,0.08); 
+            padding: 18px 36px; 
+            border-radius: 50px; 
+            margin-left: 12px;
+            font-weight: 800;
+        }
+        .cta-secondary:hover { border-color: var(--accent); transform: translateY(-3px); }
 
         .features {
             display: grid;
@@ -219,7 +229,10 @@
         <img src="turbo-logo.png" alt="Boosted App Icon" class="turbo-logo" />
         <h1>BOOSTED</h1>
         <p>The digital heartbeat of automotive culture. Discover local meets, host events, and find your crew.</p>
-                <a href="/subscribe.html" class="cta-btn">Join the Waitlist</a>
+                <div>
+                    <a href="/subscribe.html" class="cta-btn">Join the Waitlist</a>
+                    <a href="/applications.html" class="cta-btn cta-secondary">Download</a>
+                </div>
     </section>
 
     <!-- Screenshots removed to reduce visual noise and avoid implying the app is available yet -->

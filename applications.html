@@ -115,6 +115,16 @@
         .feature-list li { display: flex; align-items: center; gap: 15px; margin-bottom: 18px; color: #fff; font-weight: 500; }
         .feature-list li::before { content: '✓'; color: var(--accent); font-weight: 900; font-size: 1.1rem; }
 
+        /* Store buttons */
+        .store-buttons { display: flex; gap: 16px; margin-top: 30px; flex-wrap: wrap; align-items: center; }
+        .store-button { display: inline-flex; align-items: center; gap: 12px; padding: 12px 18px; border-radius: 24px; background: var(--card); border: 1px solid rgba(255,255,255,0.06); color: #fff; text-decoration: none; font-weight: 800; transition: all 0.18s ease; }
+        .store-button svg { width: 28px; height: 28px; display: block; flex-shrink: 0; }
+        .store-button .label { font-size: 0.95rem; text-align: left; line-height: 1; }
+        .store-button .muted { display: block; font-size: 0.75rem; color: var(--text-secondary); font-weight: 700; }
+        .store-button.apple { background: linear-gradient(180deg, #0e0e0e, var(--card)); }
+        .store-button.google { background: linear-gradient(180deg, #111, var(--card)); }
+        .store-button:hover { transform: translateY(-3px); border-color: var(--accent); box-shadow: 0 12px 30px rgba(255,45,85,0.06); }
+
         .app-visual {
             background: linear-gradient(135deg, #1a1a1a 0%, #000 100%);
             height: 100%;
@@ -228,6 +238,7 @@
             .app-content p { margin: 0 auto 40px; }
             .feature-list { display: inline-block; text-align: left; }
             .app-visual { border-left: none; border-top: 1px solid rgba(255,255,255,0.05); min-height: 400px;}
+            .store-buttons { justify-content: center; }
         }
     </style>
 </head>
@@ -256,6 +267,17 @@
                     <li>Verified Event Management</li>
                     <li>Community Crew Messaging</li>
                 </ul>
+                <div class="store-buttons">
+                    <a class="store-button apple" href="https://apps.apple.com/us/app/boosted-car-community/id6758597611" target="_blank" rel="noopener noreferrer">
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M16.365 1.43c0 1.02-.39 2.02-1.13 2.78-.8.77-1.84 1.27-2.78 1.27-.07-1.27.42-2.53 1.22-3.3.84-.8 2.07-1.41 2.75-1.5zM12.06 4.8c1.25 0 2.44.61 3.22 1.51.6.72 1.06 1.93.93 3.14-.01.09-.02.18-.04.28-.43 2.37-2.12 4.2-4.45 4.2-1.15 0-1.58-.73-2.85-.73-1.28 0-1.67.73-2.87.73-1.41 0-2.83-1.43-3.66-3.8C.7 9.18 2.53 4.9 6.28 4.9c1.2 0 2.26.69 3.26.69.97 0 2.06-.71 2.52-.79z"/></svg>
+                        <span class="label"><span class="muted">Download on the</span><strong>App Store</strong></span>
+                    </a>
+                    <a class="store-button google" href="https://play.google.com/store/apps/details?id=com.kuzynx.boostedfinalv2" target="_blank" rel="noopener noreferrer">
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M3 2.5v19l18-9.5L3 2.5z"/></svg>
+                        <span class="label"><span class="muted">Get it on</span><strong>Google Play</strong></span>
+                    </a>
+
+                </div>
             </div>
             
             <div class="app-visual">
