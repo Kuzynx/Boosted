@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.kuzynx.boostedfinalv2",
+      "sha256_cert_fingerprints": [
+        "3E:FC:4D:1B:A9:8E:FA:E2:86:9B:01:7B:6B:E2:EA:40:27:4D:A3:3A:96:97:A4:FA:C7:AF:95:8D:A8:3D:A0:E7"
+      ]
+    }
+  }
+]
