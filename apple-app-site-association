@@ -1,0 +1,11 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "UQ5763R4HU.com.kuzynx.boostedfinalv2",
+        "paths": ["/meet/*", "/user/*", "/post/*", "/*"]
+      }
+    ]
+  }
+}
