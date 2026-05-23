@@ -6,7 +6,7 @@
 
     <!-- Primary SEO -->
     <title>Boosted — Car Meets, Builds & Automotive Culture</title>
-    <meta name="description" content="Boosted is the social platform for car meets, builds, and automotive culture. Discover local meets, showcase your build, and connect with enthusiasts." />
+    <meta name="description" content="Boosted is the social platform for car meets, builds, and automotive culture. Discover local meets, showcase your build, and connect with enthusiasts. Available on iOS and Android." />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://boostedapp.org/" />
 
@@ -14,77 +14,44 @@
     <!-- <meta name="google-site-verification" content="PASTE_YOUR_CODE_HERE" /> -->
 
     <!-- Favicon / App Icons -->
-    <link rel="icon" type="image/png" href="turbo-logo.png" />
-    <link rel="apple-touch-icon" href="turbo-logo.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icon-16.png" />
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#FF2D55" />
 
     <!-- Open Graph -->
     <meta property="og:title" content="Boosted — Car Meets & Culture" />
     <meta property="og:description" content="The digital heartbeat of automotive culture. Find meets, post builds, and connect with your crew." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://boostedapp.org/" />
-    <meta property="og:image" content="https://boostedapp.org/og-image.png" />
+    <meta property="og:image" content="https://boostedapp.org/assets/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Boosted — Car Meets & Culture" />
     <meta name="twitter:description" content="Find meets. Share builds. Build culture." />
-    <meta name="twitter:image" content="https://boostedapp.org/og-image.png" />
+    <meta name="twitter:image" content="https://boostedapp.org/assets/og-image.png" />
 
     <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet" />
 
+    <link rel="stylesheet" href="/styles.css" />
     <style>
-        :root { 
-            --accent: #FF2D55; 
-            --bg: #050505; 
-            --card: #121212; 
-            --text-secondary: #a0a0a0;
+        .hero {
+            padding: 120px 20px;
+            text-align: center;
+            background: radial-gradient(circle at top, #2a0a10 0%, #050505 60%);
         }
 
-        body { 
-            background-color: var(--bg); 
-            color: #fff; 
-            font-family: 'Inter', sans-serif; 
-            margin: 0; 
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-
-        nav { 
-            padding: 20px; 
-            display: flex; 
-            justify-content: center; 
-            gap: 30px; 
-            background: rgba(0,0,0,0.85); 
-            backdrop-filter: blur(15px);
-            position: sticky; 
-            top: 0; 
-            z-index: 1000;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-
-        nav a { 
-            color: #fff; 
-            text-decoration: none; 
-            font-weight: 600; 
-            font-size: 0.85rem; 
-            text-transform: uppercase; 
-            letter-spacing: 2px; 
-            transition: 0.3s;
-        }
-
-        nav a:hover { color: var(--accent); }
-
-        .hero { 
-            padding: 120px 20px; 
-            text-align: center; 
-            background: radial-gradient(circle at top, #2a0a10 0%, #050505 60%); 
-        }
-
-        .turbo-logo { 
-            width: 140px; 
-            height: 140px; 
-            margin: 0 auto 30px; 
+        .turbo-logo {
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 30px;
             border-radius: 32px;
             background-color: #000;
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -99,52 +66,53 @@
             50% { transform: scale(1.05); }
         }
 
-        h1 { 
-            font-size: clamp(3rem, 10vw, 6rem); 
-            margin: 0; 
-            font-weight: 900;
-            letter-spacing: -4px; 
-            text-transform: uppercase;
-            background: linear-gradient(to bottom, #fff, #888);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .hero h1 {
+            font-size: clamp(3rem, 10vw, 6rem);
+            margin: 0;
+            letter-spacing: -4px;
         }
 
-        .hero p { 
-            color: var(--text-secondary); 
-            font-size: 1.25rem; 
-            max-width: 600px; 
-            margin: 20px auto 40px; 
+        .hero p {
+            color: var(--text-secondary);
+            font-size: 1.25rem;
+            max-width: 600px;
+            margin: 20px auto 40px;
         }
 
-        .cta-btn { 
-            background: var(--accent); 
-            color: #fff; 
-            padding: 20px 50px; 
-            border-radius: 50px; 
-            text-decoration: none; 
-            font-weight: 800; 
-            display: inline-block; 
-            transition: 0.3s;
-            box-shadow: 0 10px 30px rgba(255, 45, 85, 0.3);
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        /* Screenshots showcase */
+        .showcase { max-width: 1100px; margin: 40px auto 100px; padding: 0 20px; text-align: center; }
+        .showcase h2 { font-size: clamp(1.8rem, 5vw, 2.6rem); font-weight: 900; letter-spacing: -1.5px; margin: 0 0 12px; }
+        .showcase .sub { color: var(--text-secondary); margin: 0 0 50px; }
+        .shots { display: flex; gap: 28px; justify-content: center; flex-wrap: wrap; }
+        .phone {
+            width: 240px;
+            border-radius: 36px;
+            padding: 10px;
+            background: #0c0c0c;
+            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+            transition: transform 0.3s ease;
         }
+        .phone:hover { transform: translateY(-8px); }
+        .phone img { width: 100%; border-radius: 28px; display: block; }
+        .phone figcaption { color: #888; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-top: 16px; }
 
-        .cta-btn:hover { 
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(255, 45, 85, 0.5);
+        /* FAQ */
+        .faq { max-width: 760px; margin: 0 auto 110px; padding: 0 20px; }
+        .faq h2 { text-align: center; font-size: clamp(1.8rem, 5vw, 2.6rem); font-weight: 900; letter-spacing: -1.5px; margin: 0 0 40px; }
+        .faq details {
+            background: var(--card);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin-bottom: 14px;
         }
-        .cta-secondary { 
-            background: transparent; 
-            color: #fff; 
-            border: 1px solid rgba(255,255,255,0.08); 
-            padding: 18px 36px; 
-            border-radius: 50px; 
-            margin-left: 12px;
-            font-weight: 800;
-        }
-        .cta-secondary:hover { border-color: var(--accent); transform: translateY(-3px); }
+        .faq details[open] { border-color: rgba(255,45,85,0.4); }
+        .faq summary { cursor: pointer; font-weight: 700; font-size: 1.05rem; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+        .faq summary::-webkit-details-marker { display: none; }
+        .faq summary::after { content: '+'; color: var(--accent); font-weight: 900; font-size: 1.4rem; }
+        .faq details[open] summary::after { content: '−'; }
+        .faq p { color: var(--text-secondary); margin: 16px 0 0; }
 
         .features {
             display: grid;
@@ -168,56 +136,50 @@
             background: #1a1a1a;
             transform: translateY(-5px);
         }
-
-        footer { 
-            padding: 80px 20px; 
-            text-align: center; 
-            border-top: 1px solid #1a1a1a; 
-            font-size: 0.85rem; 
-            color: #444; 
-        }
-
-        .footer-socials {
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .footer-socials a {
-            color: #666;
-            text-decoration: none;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.75rem;
-            transition: 0.3s;
-        }
-
-        .footer-socials a:hover {
-            color: var(--accent);
-        }
-
-        .llc-name {
-            color: #eee;
-            font-weight: 800;
-            letter-spacing: 1px;
-        }
-        
-        /* Waitlist form & screenshots */
-        .waitlist-form { display: flex; gap: 12px; justify-content: center; align-items: center; margin-top: 20px; }
-        .email-input { padding: 14px 18px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.06); background: #0b0b0b; color: #fff; min-width: 280px; }
-        .email-input::placeholder { color: #777; }
-        .join-btn { background: linear-gradient(90deg, #ff2d55, #ff7a9a); color: #fff; border: none; padding: 14px 22px; border-radius: 12px; font-weight: 800; cursor: pointer; }
-        .join-btn:disabled { opacity: 0.6; cursor: default; }
-        .note { color: var(--text-secondary); font-size: 0.95rem; margin-top: 12px; }
-
-        .screenshots { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; max-width: 1100px; margin: 40px auto 80px; padding: 0 20px; }
-        .screenshot { width: 100%; border-radius: 18px; border: 1px solid rgba(255,255,255,0.04); box-shadow: 0 10px 30px rgba(0,0,0,0.6); background:#000; }
     </style>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MobileApplication",
+      "name": "Boosted",
+      "operatingSystem": "iOS, Android",
+      "applicationCategory": "SocialNetworkingApplication",
+      "description": "The social platform for car meets, builds, and automotive culture. Discover local meets, showcase your build, and connect with enthusiasts.",
+      "url": "https://boostedapp.org/",
+      "image": "https://boostedapp.org/assets/icon-512.png",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Boosted Platforms LLC",
+        "url": "https://boostedapp.org/"
+      },
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "downloadUrl": [
+        "https://apps.apple.com/us/app/boosted-car-community/id6758597611",
+        "https://play.google.com/store/apps/details?id=com.kuzynx.boostedfinalv2"
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "How much does Boosted cost?", "acceptedAnswer": { "@type": "Answer", "text": "Boosted is free to download on the App Store and Google Play. Create your garage, find meets, and join crews at no cost." } },
+        { "@type": "Question", "name": "Which devices are supported?", "acceptedAnswer": { "@type": "Answer", "text": "Boosted is available for both iOS and Android. Download it from the Apple App Store or Google Play." } },
+        { "@type": "Question", "name": "How do I host my own meet?", "acceptedAnswer": { "@type": "Answer", "text": "Open the app, head to Events, and tap create. You can set the location, time, and details, then share it with the community." } },
+        { "@type": "Question", "name": "How do I get support?", "acceptedAnswer": { "@type": "Answer", "text": "Reach our team anytime at our contact page — email or phone, typically answered within 24 hours." } }
+      ]
+    }
+    </script>
+
+    <!-- Privacy-friendly analytics (no cookies). Activates once boostedapp.org is
+         registered at plausible.io. Swap or remove this tag if you use a different tool. -->
+    <script defer data-domain="boostedapp.org" src="https://plausible.io/js/script.outbound-links.js"></script>
 </head>
 
 <body>
+    <a href="#main" class="skip-link">Skip to content</a>
     <nav>
         <a href="/">Home</a>
         <a href="/about.html">About</a>
@@ -225,17 +187,20 @@
         <a href="/contact.html">Contact</a>
     </nav>
 
+    <main id="main">
     <section class="hero">
-        <img src="turbo-logo.png" alt="Boosted App Icon" class="turbo-logo" />
-        <h1>BOOSTED</h1>
+        <img src="/assets/logo-256.png" alt="Boosted app icon" class="turbo-logo" width="140" height="140" />
+        <h1 class="gradient-heading">BOOSTED</h1>
         <p>The digital heartbeat of automotive culture. Discover local meets, host events, and find your crew.</p>
-                <div>
-                    <a href="/subscribe.html" class="cta-btn" aria-label="Subscribe to our newsletter">Newsletter</a>
-                    <a href="/applications.html" class="cta-btn cta-secondary">Download</a>
-                </div>
+        <div class="store-badges center">
+            <a href="https://apps.apple.com/us/app/boosted-car-community/id6758597611" target="_blank" rel="noopener noreferrer">
+                <img src="/assets/badge-appstore.svg" alt="Download Boosted on the App Store" />
+            </a>
+            <a href="https://play.google.com/store/apps/details?id=com.kuzynx.boostedfinalv2" target="_blank" rel="noopener noreferrer">
+                <img src="/assets/badge-googleplay.svg" alt="Get Boosted on Google Play" />
+            </a>
+        </div>
     </section>
-
-    <!-- Screenshots removed to reduce visual noise and avoid implying the app is available yet -->
 
     <section class="features">
         <div class="feature-card">
@@ -252,64 +217,56 @@
         </div>
     </section>
 
+    <section class="showcase">
+        <h2>See it in action</h2>
+        <p class="sub">A look inside the app.</p>
+        <div class="shots">
+            <figure class="phone">
+                <img src="/assets/screenshot-1.png" alt="Boosted real-time discovery map" loading="lazy" />
+                <figcaption>Discovery Map</figcaption>
+            </figure>
+            <figure class="phone">
+                <img src="/assets/screenshot-2.png" alt="Boosted digital garage and build profiles" loading="lazy" />
+                <figcaption>Your Garage</figcaption>
+            </figure>
+            <figure class="phone">
+                <img src="/assets/screenshot-3.png" alt="Boosted verified events and meets" loading="lazy" />
+                <figcaption>Events</figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <section class="faq">
+        <h2>FAQ</h2>
+        <details>
+            <summary>How much does Boosted cost?</summary>
+            <p>Boosted is free to download on the App Store and Google Play. Create your garage, find meets, and join crews at no cost.</p>
+        </details>
+        <details>
+            <summary>Which devices are supported?</summary>
+            <p>Boosted is available for both iOS and Android. Download it from the Apple App Store or Google Play.</p>
+        </details>
+        <details>
+            <summary>How do I host my own meet?</summary>
+            <p>Open the app, head to Events, and tap create. You can set the location, time, and details, then share it with the community.</p>
+        </details>
+        <details>
+            <summary>How do I get support?</summary>
+            <p>Reach our team anytime at <a href="/contact.html" style="color:var(--accent);">our contact page</a> — email or phone, typically answered within 24 hours.</p>
+        </details>
+    </section>
+    </main>
+
     <footer>
         <div class="footer-socials">
             <a href="https://www.instagram.com/boosted_platforms?igsh=NTc4MTIwNjQ2YQ==" target="_blank" rel="noopener">Instagram</a>
             <a href="https://www.tiktok.com/@boostedplatforms?_r=1&_t=ZT-92TZxG6OG0N" target="_blank" rel="noopener">TikTok</a>
         </div>
         <span class="llc-name">BOOSTED PLATFORMS LLC</span><br />
-        © 2025 All rights reserved
-        <!-- Admin-only tools removed from public footer for security. -->
+        © 2026 All rights reserved
+        <div class="footer-legal" style="margin-top:16px;">
+            <a href="/applications.html">Privacy Policy</a> &bull; <a href="/applications.html">Terms of Service</a>
+        </div>
     </footer>
-    <script>
-        // Simple client-side waitlist capture (stores emails in localStorage).
-        // Replace this with a real backend or service endpoint for production.
-        function handleWaitlistSubmit(e) {
-            e.preventDefault();
-            var emailEl = document.getElementById('waitlist-email');
-            var email = (emailEl && emailEl.value || '').trim();
-            if (!email) {
-                return false;
-            }
-            try {
-                var key = 'boosted_waitlist';
-                var list = JSON.parse(localStorage.getItem(key) || '[]');
-                if (!list.includes(email)) list.push(email);
-                localStorage.setItem(key, JSON.stringify(list));
-                document.getElementById('waitlist-msg').textContent = 'Thanks — you\u2019re on the waitlist! We\u2019ll email you when we launch.';
-                document.getElementById('join-btn').disabled = true;
-            } catch (err) {
-                document.getElementById('waitlist-msg').textContent = 'Thanks — we received your email.';
-            }
-            return false;
-        }
-
-        // Export stored waitlist to CSV and trigger download
-        function exportWaitlistCSV() {
-            var key = 'boosted_waitlist';
-            var list = JSON.parse(localStorage.getItem(key) || '[]');
-            if (!list || list.length === 0) {
-                alert('No waitlist emails found in localStorage.');
-                return;
-            }
-            var csv = 'email\n' + list.map(function(e){ return '"' + e.replace(/"/g, '""') + '"'; }).join('\n');
-            var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-            var url = URL.createObjectURL(blob);
-            var a = document.createElement('a');
-            a.href = url;
-            a.download = 'boosted-waitlist.csv';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-        }
-
-        // Clear stored waitlist (useful for testing/admin)
-        function clearWaitlist() {
-            if (!confirm('Clear all waitlist emails from localStorage? This cannot be undone.')) return;
-            localStorage.removeItem('boosted_waitlist');
-            alert('Waitlist cleared.');
-        }
-    </script>
 </body>
 </html>

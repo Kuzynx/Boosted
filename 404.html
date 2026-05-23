@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page Not Found — Boosted</title>
+    <meta name="robots" content="noindex" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png" />
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+    <style>
+        .nf {
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 80px 20px;
+            background: radial-gradient(circle at top, #2a0a10 0%, #050505 70%);
+        }
+        .nf h1 { font-size: clamp(4rem, 18vw, 9rem); margin: 0; letter-spacing: -4px; }
+        .nf p { color: var(--text-secondary); font-size: 1.2rem; margin: 10px 0 36px; }
+        .nf a.btn {
+            background: var(--accent);
+            color: #fff;
+            padding: 16px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 30px rgba(255, 45, 85, 0.3);
+            transition: 0.3s;
+        }
+        .nf a.btn:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(255, 45, 85, 0.5); }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/about.html">About</a>
+        <a href="/applications.html">Apps</a>
+        <a href="/contact.html">Contact</a>
+    </nav>
+
+    <main class="nf">
+        <h1 class="gradient-heading">404</h1>
+        <p>This road doesn't lead anywhere. Let's get you back on track.</p>
+        <a class="btn" href="/">Back to Home</a>
+    </main>
+</body>
+</html>
