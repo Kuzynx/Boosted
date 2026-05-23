@@ -3,54 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About | Boosted</title>
+
+    <title>About Boosted — Our Story & Mission</title>
+    <meta name="description" content="Boosted is the centralized digital heartbeat for automotive culture — built so every enthusiast can find their crew and fuel their passion without the noise." />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://boostedapp.org/about.html" />
+
+    <meta property="og:title" content="About Boosted — Our Story" />
+    <meta property="og:description" content="The centralized digital heartbeat for automotive culture. Find your crew and fuel your passion." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://boostedapp.org/about.html" />
+    <meta property="og:image" content="https://boostedapp.org/turbo-logo.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="About Boosted — Our Story" />
+    <meta name="twitter:description" content="The centralized digital heartbeat for automotive culture." />
+    <meta name="twitter:image" content="https://boostedapp.org/turbo-logo.png" />
+
     <link rel="icon" type="image/png" href="/turbo-logo.png">
     <link rel="apple-touch-icon" href="/turbo-logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css" />
     <style>
-        :root { 
-            --accent: #FF2D55; 
-            --bg: #050505; 
-            --card: #121212; 
-            --text-secondary: #a0a0a0;
-        }
+        body { line-height: 1.8; }
 
-        body { 
-            background-color: var(--bg); 
-            color: #fff; 
-            font-family: 'Inter', sans-serif; 
-            margin: 0; 
-            line-height: 1.8;
-            overflow-x: hidden;
-        }
-
-        /* Navigation (Unified) */
-        nav { 
-            padding: 20px; 
-            display: flex; 
-            justify-content: center; 
-            gap: 30px; 
-            background: rgba(0,0,0,0.8); 
-            backdrop-filter: blur(15px);
-            position: sticky; 
-            top: 0; 
-            z-index: 1000;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-
-        nav a { 
-            color: #fff; 
-            text-decoration: none; 
-            font-weight: 600; 
-            font-size: 0.85rem; 
-            text-transform: uppercase; 
-            letter-spacing: 2px; 
-            transition: 0.3s;
-        }
-
-        nav a:hover { color: var(--accent); }
-
-        /* Header */
         .about-header {
             padding: 120px 20px 60px;
             text-align: center;
@@ -59,17 +36,10 @@
 
         .about-header h1 {
             font-size: clamp(2.5rem, 8vw, 4.5rem);
-            font-weight: 900;
             letter-spacing: -3px;
             margin: 0;
-            text-transform: uppercase;
-            background: linear-gradient(to bottom, #fff, #888);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
         }
 
-        /* Mission Content */
         .mission-section {
             max-width: 800px;
             margin: 0 auto 60px;
@@ -93,7 +63,6 @@
             margin-bottom: 30px;
         }
 
-        /* Values Grid */
         .values-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -106,7 +75,7 @@
         .value-card {
             background: var(--card);
             padding: 40px;
-            border-radius: 32px; /* Unified Squircle Radius */
+            border-radius: 32px;
             border: 1px solid rgba(255,255,255,0.05);
             text-align: left;
             transition: 0.3s ease;
@@ -132,59 +101,23 @@
             margin-bottom: 0;
             line-height: 1.6;
         }
-
-        /* Footer (Unified) */
-        footer { 
-            padding: 80px 20px; 
-            text-align: center; 
-            border-top: 1px solid #1a1a1a; 
-            font-size: 0.85rem; 
-            color: #444; 
-        }
-
-        .footer-socials {
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .footer-socials a {
-            color: #666;
-            text-decoration: none;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.75rem;
-            transition: 0.3s;
-        }
-
-        .footer-socials a:hover {
-            color: var(--accent);
-        }
-
-        .llc-name {
-            color: #eee;
-            font-weight: 800;
-            letter-spacing: 1px;
-        }
-
     </style>
 </head>
 <body>
+    <a href="#main" class="skip-link">Skip to content</a>
 
     <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="applications.html">Apps</a>
-        <a href="contact.html">Contact</a>
+        <a href="/">Home</a>
+        <a href="/about.html">About</a>
+        <a href="/applications.html">Apps</a>
+        <a href="/contact.html">Contact</a>
     </nav>
 
     <header class="about-header">
-        <h1>Our Story</h1>
+        <h1 class="gradient-heading">Our Story</h1>
     </header>
 
-    <main class="mission-section">
+    <main id="main" class="mission-section">
         <span class="mission-label">The Mission</span>
         <p>
             Boosted was born from a simple frustration: automotive culture is thriving, but the information connecting us is scattered across dead forums and social media noise.
@@ -211,13 +144,15 @@
 
     <footer>
         <div class="footer-socials">
-            <a href="https://www.instagram.com/boosted_platforms?igsh=NTc4MTIwNjQ2YQ==">Instagram</a>
-            <a href="https://www.tiktok.com/@boostedplatforms?_r=1&_t=ZT-92TZxG6OG0N">TikTok</a>
+            <a href="https://www.instagram.com/boosted_platforms?igsh=NTc4MTIwNjQ2YQ==" target="_blank" rel="noopener">Instagram</a>
+            <a href="https://www.tiktok.com/@boostedplatforms?_r=1&_t=ZT-92TZxG6OG0N" target="_blank" rel="noopener">TikTok</a>
         </div>
         <span class="llc-name">BOOSTED PLATFORMS LLC</span><br>
-        &copy; 2025 All rights reserved. <br><br>
-        <a href="applications.html" style="color: #444; text-decoration: none;">Privacy Policy</a> &bull; 
-        <a href="applications.html" style="color: #444; text-decoration: none;">Terms of Service</a>
+        &copy; 2026 All rights reserved. <br><br>
+        <div class="footer-legal">
+            <a href="/applications.html">Privacy Policy</a> &bull;
+            <a href="/applications.html">Terms of Service</a>
+        </div>
     </footer>
 
 </body>

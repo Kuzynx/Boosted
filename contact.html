@@ -3,54 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact | Boosted</title>
+
+    <title>Contact & Support — Boosted</title>
+    <meta name="description" content="Get in touch with Boosted Platforms LLC. Email or call our support team for technical help, partnership inquiries, and media requests." />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://boostedapp.org/contact.html" />
+
+    <meta property="og:title" content="Contact & Support — Boosted" />
+    <meta property="og:description" content="Get in touch with Boosted Platforms LLC for support, partnerships, and media inquiries." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://boostedapp.org/contact.html" />
+    <meta property="og:image" content="https://boostedapp.org/turbo-logo.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Contact & Support — Boosted" />
+    <meta name="twitter:description" content="Get in touch with Boosted Platforms LLC." />
+    <meta name="twitter:image" content="https://boostedapp.org/turbo-logo.png" />
+
     <link rel="icon" type="image/png" href="/turbo-logo.png">
     <link rel="apple-touch-icon" href="/turbo-logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css" />
     <style>
-        :root { 
-            --accent: #FF2D55; 
-            --bg: #050505; 
-            --card: #121212; 
-            --text-secondary: #a0a0a0;
-        }
-
-        body { 
-            background-color: var(--bg); 
-            color: #fff; 
-            font-family: 'Inter', sans-serif; 
-            margin: 0; 
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-
-        /* Navigation (Unified) */
-        nav { 
-            padding: 20px; 
-            display: flex; 
-            justify-content: center; 
-            gap: 30px; 
-            background: rgba(0,0,0,0.8); 
-            backdrop-filter: blur(15px);
-            position: sticky; 
-            top: 0; 
-            z-index: 1000;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-
-        nav a { 
-            color: #fff; 
-            text-decoration: none; 
-            font-weight: 600; 
-            font-size: 0.85rem; 
-            text-transform: uppercase; 
-            letter-spacing: 2px; 
-            transition: 0.3s;
-        }
-
-        nav a:hover { color: var(--accent); }
-
-        /* Support Hero */
         .support-hero {
             padding: 120px 20px 60px;
             text-align: center;
@@ -59,14 +34,8 @@
 
         .support-hero h1 {
             font-size: clamp(2.5rem, 8vw, 4.5rem);
-            font-weight: 900;
             letter-spacing: -3px;
             margin: 0;
-            text-transform: uppercase;
-            background: linear-gradient(to bottom, #fff, #888);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
         }
 
         .support-hero p {
@@ -78,7 +47,6 @@
             margin-top: 15px;
         }
 
-        /* Contact Grid */
         .contact-container {
             max-width: 1100px;
             margin: 0 auto 120px;
@@ -91,7 +59,7 @@
         .contact-card {
             background: var(--card);
             padding: 60px 45px;
-            border-radius: 32px; /* Unified squircle radius */
+            border-radius: 32px;
             border: 1px solid rgba(255,255,255,0.05);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
@@ -142,59 +110,24 @@
             margin: 0;
             line-height: 1.5;
         }
-
-        /* Footer (Unified) */
-        footer { 
-            padding: 80px 20px; 
-            text-align: center; 
-            border-top: 1px solid #1a1a1a; 
-            font-size: 0.85rem; 
-            color: #444; 
-        }
-
-        .footer-socials {
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .footer-socials a {
-            color: #666;
-            text-decoration: none;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.75rem;
-            transition: 0.3s;
-        }
-
-        .footer-socials a:hover {
-            color: var(--accent);
-        }
-
-        .llc-name {
-            color: #eee;
-            font-weight: 800;
-            letter-spacing: 1px;
-        }
     </style>
 </head>
 <body>
+    <a href="#main" class="skip-link">Skip to content</a>
 
     <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="applications.html">Apps</a>
-        <a href="contact.html">Contact</a>
+        <a href="/">Home</a>
+        <a href="/about.html">About</a>
+        <a href="/applications.html">Apps</a>
+        <a href="/contact.html">Contact</a>
     </nav>
 
     <div class="support-hero">
-        <h1>Support</h1>
+        <h1 class="gradient-heading">Support</h1>
         <p>Boosted Platforms LLC</p>
     </div>
 
-    <main class="contact-container">
+    <main id="main" class="contact-container">
         <div class="contact-card">
             <span class="subtitle">Official Channel</span>
             <h3>Email</h3>
@@ -212,12 +145,15 @@
 
     <footer>
         <div class="footer-socials">
-            <a href="https://www.instagram.com/boosted_platforms?igsh=NTc4MTIwNjQ2YQ==">Instagram</a>
-            <a href="https://www.tiktok.com/@boostedplatforms?_r=1&_t=ZT-92TZxG6OG0N">TikTok</a>
+            <a href="https://www.instagram.com/boosted_platforms?igsh=NTc4MTIwNjQ2YQ==" target="_blank" rel="noopener">Instagram</a>
+            <a href="https://www.tiktok.com/@boostedplatforms?_r=1&_t=ZT-92TZxG6OG0N" target="_blank" rel="noopener">TikTok</a>
         </div>
         <span class="llc-name">BOOSTED PLATFORMS LLC</span><br>
-        &copy; 2025 All rights reserved. <br><br>
-        <a href="applications.html">Privacy Policy</a> &bull; <a href="applications.html">Terms of Service</a>
+        &copy; 2026 All rights reserved. <br><br>
+        <div class="footer-legal">
+            <a href="/applications.html">Privacy Policy</a> &bull;
+            <a href="/applications.html">Terms of Service</a>
+        </div>
     </footer>
 
 </body>
