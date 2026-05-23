@@ -14,21 +14,26 @@
     <!-- <meta name="google-site-verification" content="PASTE_YOUR_CODE_HERE" /> -->
 
     <!-- Favicon / App Icons -->
-    <link rel="icon" type="image/png" href="/turbo-logo.png" />
-    <link rel="apple-touch-icon" href="/turbo-logo.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icon-16.png" />
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#FF2D55" />
 
     <!-- Open Graph -->
     <meta property="og:title" content="Boosted — Car Meets & Culture" />
     <meta property="og:description" content="The digital heartbeat of automotive culture. Find meets, post builds, and connect with your crew." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://boostedapp.org/" />
-    <meta property="og:image" content="https://boostedapp.org/turbo-logo.png" />
+    <meta property="og:image" content="https://boostedapp.org/assets/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Boosted — Car Meets & Culture" />
     <meta name="twitter:description" content="Find meets. Share builds. Build culture." />
-    <meta name="twitter:image" content="https://boostedapp.org/turbo-logo.png" />
+    <meta name="twitter:image" content="https://boostedapp.org/assets/og-image.png" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -74,13 +79,40 @@
             margin: 20px auto 40px;
         }
 
-        /* Store buttons */
-        .store-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-        .store-button { display: inline-flex; align-items: center; gap: 12px; padding: 14px 22px; border-radius: 24px; background: var(--card); border: 1px solid rgba(255,255,255,0.08); color: #fff; text-decoration: none; font-weight: 800; transition: all 0.18s ease; }
-        .store-button svg { width: 28px; height: 28px; display: block; flex-shrink: 0; }
-        .store-button .label { font-size: 0.95rem; text-align: left; line-height: 1.1; }
-        .store-button .muted { display: block; font-size: 0.72rem; color: var(--text-secondary); font-weight: 700; }
-        .store-button:hover, .store-button:focus-visible { transform: translateY(-3px); border-color: var(--accent); box-shadow: 0 12px 30px rgba(255,45,85,0.18); }
+        /* Screenshots showcase */
+        .showcase { max-width: 1100px; margin: 40px auto 100px; padding: 0 20px; text-align: center; }
+        .showcase h2 { font-size: clamp(1.8rem, 5vw, 2.6rem); font-weight: 900; letter-spacing: -1.5px; margin: 0 0 12px; }
+        .showcase .sub { color: var(--text-secondary); margin: 0 0 50px; }
+        .shots { display: flex; gap: 28px; justify-content: center; flex-wrap: wrap; }
+        .phone {
+            width: 240px;
+            border-radius: 36px;
+            padding: 10px;
+            background: #0c0c0c;
+            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+            transition: transform 0.3s ease;
+        }
+        .phone:hover { transform: translateY(-8px); }
+        .phone img { width: 100%; border-radius: 28px; display: block; }
+        .phone figcaption { color: #888; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-top: 16px; }
+
+        /* FAQ */
+        .faq { max-width: 760px; margin: 0 auto 110px; padding: 0 20px; }
+        .faq h2 { text-align: center; font-size: clamp(1.8rem, 5vw, 2.6rem); font-weight: 900; letter-spacing: -1.5px; margin: 0 0 40px; }
+        .faq details {
+            background: var(--card);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin-bottom: 14px;
+        }
+        .faq details[open] { border-color: rgba(255,45,85,0.4); }
+        .faq summary { cursor: pointer; font-weight: 700; font-size: 1.05rem; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+        .faq summary::-webkit-details-marker { display: none; }
+        .faq summary::after { content: '+'; color: var(--accent); font-weight: 900; font-size: 1.4rem; }
+        .faq details[open] summary::after { content: '−'; }
+        .faq p { color: var(--text-secondary); margin: 16px 0 0; }
 
         .features {
             display: grid;
@@ -115,7 +147,7 @@
       "applicationCategory": "SocialNetworkingApplication",
       "description": "The social platform for car meets, builds, and automotive culture. Discover local meets, showcase your build, and connect with enthusiasts.",
       "url": "https://boostedapp.org/",
-      "image": "https://boostedapp.org/turbo-logo.png",
+      "image": "https://boostedapp.org/assets/icon-512.png",
       "publisher": {
         "@type": "Organization",
         "name": "Boosted Platforms LLC",
@@ -128,6 +160,22 @@
       ]
     }
     </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "How much does Boosted cost?", "acceptedAnswer": { "@type": "Answer", "text": "Boosted is free to download on the App Store and Google Play. Create your garage, find meets, and join crews at no cost." } },
+        { "@type": "Question", "name": "Which devices are supported?", "acceptedAnswer": { "@type": "Answer", "text": "Boosted is available for both iOS and Android. Download it from the Apple App Store or Google Play." } },
+        { "@type": "Question", "name": "How do I host my own meet?", "acceptedAnswer": { "@type": "Answer", "text": "Open the app, head to Events, and tap create. You can set the location, time, and details, then share it with the community." } },
+        { "@type": "Question", "name": "How do I get support?", "acceptedAnswer": { "@type": "Answer", "text": "Reach our team anytime at our contact page — email or phone, typically answered within 24 hours." } }
+      ]
+    }
+    </script>
+
+    <!-- Privacy-friendly analytics (no cookies). Activates once boostedapp.org is
+         registered at plausible.io. Swap or remove this tag if you use a different tool. -->
+    <script defer data-domain="boostedapp.org" src="https://plausible.io/js/script.outbound-links.js"></script>
 </head>
 
 <body>
@@ -141,17 +189,15 @@
 
     <main id="main">
     <section class="hero">
-        <img src="/turbo-logo.png" alt="Boosted app icon" class="turbo-logo" width="140" height="140" />
+        <img src="/assets/logo-256.png" alt="Boosted app icon" class="turbo-logo" width="140" height="140" />
         <h1 class="gradient-heading">BOOSTED</h1>
         <p>The digital heartbeat of automotive culture. Discover local meets, host events, and find your crew.</p>
-        <div class="store-buttons">
-            <a class="store-button" href="https://apps.apple.com/us/app/boosted-car-community/id6758597611" target="_blank" rel="noopener noreferrer">
-                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M16.365 1.43c0 1.02-.39 2.02-1.13 2.78-.8.77-1.84 1.27-2.78 1.27-.07-1.27.42-2.53 1.22-3.3.84-.8 2.07-1.41 2.75-1.5zM12.06 4.8c1.25 0 2.44.61 3.22 1.51.6.72 1.06 1.93.93 3.14-.01.09-.02.18-.04.28-.43 2.37-2.12 4.2-4.45 4.2-1.15 0-1.58-.73-2.85-.73-1.28 0-1.67.73-2.87.73-1.41 0-2.83-1.43-3.66-3.8C.7 9.18 2.53 4.9 6.28 4.9c1.2 0 2.26.69 3.26.69.97 0 2.06-.71 2.52-.79z"/></svg>
-                <span class="label"><span class="muted">Download on the</span><strong>App Store</strong></span>
+        <div class="store-badges center">
+            <a href="https://apps.apple.com/us/app/boosted-car-community/id6758597611" target="_blank" rel="noopener noreferrer">
+                <img src="/assets/badge-appstore.svg" alt="Download Boosted on the App Store" />
             </a>
-            <a class="store-button" href="https://play.google.com/store/apps/details?id=com.kuzynx.boostedfinalv2" target="_blank" rel="noopener noreferrer">
-                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M3 2.5v19l18-9.5L3 2.5z"/></svg>
-                <span class="label"><span class="muted">Get it on</span><strong>Google Play</strong></span>
+            <a href="https://play.google.com/store/apps/details?id=com.kuzynx.boostedfinalv2" target="_blank" rel="noopener noreferrer">
+                <img src="/assets/badge-googleplay.svg" alt="Get Boosted on Google Play" />
             </a>
         </div>
     </section>
@@ -169,6 +215,45 @@
             <h3>Connect</h3>
             <p>Join local crews and talk with enthusiasts who get it.</p>
         </div>
+    </section>
+
+    <section class="showcase">
+        <h2>See it in action</h2>
+        <p class="sub">A look inside the app.</p>
+        <div class="shots">
+            <figure class="phone">
+                <img src="/assets/screenshot-1.png" alt="Boosted real-time discovery map" loading="lazy" />
+                <figcaption>Discovery Map</figcaption>
+            </figure>
+            <figure class="phone">
+                <img src="/assets/screenshot-2.png" alt="Boosted digital garage and build profiles" loading="lazy" />
+                <figcaption>Your Garage</figcaption>
+            </figure>
+            <figure class="phone">
+                <img src="/assets/screenshot-3.png" alt="Boosted verified events and meets" loading="lazy" />
+                <figcaption>Events</figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <section class="faq">
+        <h2>FAQ</h2>
+        <details>
+            <summary>How much does Boosted cost?</summary>
+            <p>Boosted is free to download on the App Store and Google Play. Create your garage, find meets, and join crews at no cost.</p>
+        </details>
+        <details>
+            <summary>Which devices are supported?</summary>
+            <p>Boosted is available for both iOS and Android. Download it from the Apple App Store or Google Play.</p>
+        </details>
+        <details>
+            <summary>How do I host my own meet?</summary>
+            <p>Open the app, head to Events, and tap create. You can set the location, time, and details, then share it with the community.</p>
+        </details>
+        <details>
+            <summary>How do I get support?</summary>
+            <p>Reach our team anytime at <a href="/contact.html" style="color:var(--accent);">our contact page</a> — email or phone, typically answered within 24 hours.</p>
+        </details>
     </section>
     </main>
 
