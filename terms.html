@@ -44,19 +44,28 @@
         }
 
         .legal-body {
-            max-width: 860px;
+            max-width: 980px;
             margin: 0 auto 80px;
             padding: 40px 24px 0;
         }
 
-        /* Keep the embedded Termly policy readable on the dark theme */
-        .legal-body [name="termly-embed"] {
-            background: var(--card);
+        .legal-frame {
+            width: 100%;
+            height: 80vh;
+            min-height: 640px;
             border: 1px solid rgba(255,255,255,0.06);
             border-radius: 24px;
-            padding: clamp(20px, 4vw, 48px);
-            color: #d6d6d6;
+            background: #fff;
+            display: block;
         }
+
+        .legal-fallback {
+            margin-top: 18px;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+        .legal-fallback a { color: var(--accent); }
     </style>
     <script defer data-domain="boostedapp.org" src="https://plausible.io/js/script.outbound-links.js"></script>
 </head>
@@ -75,13 +84,15 @@
     </header>
 
     <main id="main" class="legal-body">
-        <div name="termly-embed" data-id="b0fa91fa-14d7-43f0-bbd0-9d790932d02e"></div>
-        <noscript>
-            <p style="color:#a0a0a0;text-align:center;">
-                Please enable JavaScript to view our Terms of Service, or
-                <a href="https://app.termly.io/policy-viewer/policy.html?policyUUID=b0fa91fa-14d7-43f0-bbd0-9d790932d02e" target="_blank" rel="noopener" style="color:var(--accent);">read it here</a>.
-            </p>
-        </noscript>
+        <iframe
+            class="legal-frame"
+            title="Boosted Terms of Service"
+            src="https://app.termly.io/policy-viewer/policy.html?policyUUID=b0fa91fa-14d7-43f0-bbd0-9d790932d02e"
+            loading="lazy"></iframe>
+        <p class="legal-fallback">
+            Trouble viewing it above?
+            <a href="https://app.termly.io/policy-viewer/policy.html?policyUUID=b0fa91fa-14d7-43f0-bbd0-9d790932d02e" target="_blank" rel="noopener">Open the Terms of Service in a new tab</a>.
+        </p>
     </main>
 
     <footer>
@@ -97,14 +108,5 @@
         </div>
     </footer>
 
-    <script type="text/javascript">
-        (function(d, s, id) {
-            var js, tjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
-            js.src = "https://app.termly.io/embed-policy.min.js";
-            tjs.parentNode.insertBefore(js, tjs);
-        }(document, 'script', 'termly-jssdk'));
-    </script>
 </body>
 </html>
