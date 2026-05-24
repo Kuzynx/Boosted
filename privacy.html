@@ -44,26 +44,37 @@
         }
 
         .legal-body {
-            max-width: 980px;
-            margin: 0 auto 80px;
+            max-width: 720px;
+            margin: 0 auto 100px;
             padding: 40px 24px 0;
-        }
-
-        .legal-embed {
-            background: #fff;
-            color: #111;
-            border-radius: 24px;
-            padding: clamp(20px, 4vw, 48px);
-            min-height: 400px;
-        }
-
-        .legal-fallback {
-            margin-top: 18px;
             text-align: center;
-            color: var(--text-secondary);
-            font-size: 0.85rem;
         }
-        .legal-fallback a { color: var(--accent); }
+
+        .legal-body p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin: 0 auto 36px;
+        }
+
+        .legal-cta {
+            display: inline-block;
+            background: var(--accent);
+            color: #fff;
+            text-decoration: none;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.95rem;
+            padding: 18px 40px;
+            border-radius: 999px;
+            transition: transform 0.18s ease, box-shadow 0.18s ease;
+        }
+        .legal-cta:hover,
+        .legal-cta:focus-visible {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(255, 45, 85, 0.25);
+        }
     </style>
     <script defer data-domain="boostedapp.org" src="https://plausible.io/js/script.outbound-links.js"></script>
 </head>
@@ -82,11 +93,11 @@
     </header>
 
     <main id="main" class="legal-body">
-        <div name="termly-embed" data-id="162e6f97-2807-4381-bfc6-731c53833011" class="legal-embed"></div>
-        <p class="legal-fallback">
-            Trouble viewing it above?
-            <a href="https://app.termly.io/policy-viewer/policy.html?policyUUID=162e6f97-2807-4381-bfc6-731c53833011" target="_blank" rel="noopener">Open the Privacy Policy in a new tab</a>.
+        <p>
+            Read the full Privacy Policy describing how Boosted Platforms LLC collects, uses,
+            and protects your data. The document opens in a new tab.
         </p>
+        <a class="legal-cta" href="https://app.termly.io/policy-viewer/policy.html?policyUUID=162e6f97-2807-4381-bfc6-731c53833011" target="_blank" rel="noopener">View Privacy Policy</a>
     </main>
 
     <footer>
@@ -102,12 +113,5 @@
         </div>
     </footer>
 
-    <script type="text/javascript">(function(d, s, id) {
-        var js, tjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "https://app.termly.io/embed-policy.min.js";
-        tjs.parentNode.insertBefore(js, tjs);
-    }(document, 'script', 'termly-jssdk'));</script>
 </body>
 </html>
