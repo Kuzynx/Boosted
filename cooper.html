@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>·</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+    <style>
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle at center, #2a0a10 0%, #050505 70%);
+            text-align: center;
+            padding: 40px 20px;
+        }
+        .msg {
+            font-size: clamp(2.5rem, 10vw, 6rem);
+            letter-spacing: -3px;
+            margin: 0;
+        }
+        .heart {
+            color: var(--accent);
+            font-size: 2rem;
+            margin-top: 24px;
+            animation: beat 1.4s infinite ease-in-out;
+        }
+        @keyframes beat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1 class="msg gradient-heading">COOPER SO CUTIE</h1>
+        <div class="heart" aria-hidden="true">♥</div>
+    </main>
+</body>
+</html>
