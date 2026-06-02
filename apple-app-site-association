@@ -4,7 +4,7 @@
     "details": [
       {
         "appID": "UQ5763R4HU.com.kuzynx.boostedfinalv2",
-        "paths": ["NOT /cooper.html", "/meet/*", "/user/*", "/post/*", "/*"]
+        "paths": ["/meet/*", "/user/*", "/post/*", "/*"]
       }
     ]
   }
