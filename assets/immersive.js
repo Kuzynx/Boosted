@@ -227,6 +227,110 @@
     });
   }
 
+  /* ---------------------------------------------------------------------------
+     3D turbo — an always-on metallic compressor wheel that spins in the hero
+     and tilts toward the pointer. The brand's namesake, front and centre.
+  --------------------------------------------------------------------------- */
+  function initTurbo() {
+    var canvas = document.getElementById('turbo-canvas');
+    if (!canvas || typeof window.THREE === 'undefined') return;
+    var THREE = window.THREE;
+
+    var renderer;
+    try {
+      renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
+    } catch (e) { return; }
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+
+    // WebGL is live — drop the static logo fallback.
+    var stage = canvas.parentNode;
+    if (stage && stage.classList) stage.classList.add('webgl-on');
+
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(38, 1, 0.1, 100);
+    camera.position.set(0, 0, 6.2);
+
+    var metal = new THREE.MeshStandardMaterial({
+      color: 0xb4b6bd, metalness: 0.92, roughness: 0.26,
+      emissive: 0x350d18, emissiveIntensity: 0.55
+    });
+
+    var turbo = new THREE.Group();
+
+    // Nose cone pointing toward the viewer
+    var nose = new THREE.Mesh(new THREE.ConeGeometry(0.55, 1.05, 44), metal);
+    nose.rotation.x = Math.PI / 2;
+    nose.position.z = 0.62;
+    turbo.add(nose);
+
+    // Back hub
+    var hub = new THREE.Mesh(new THREE.CylinderGeometry(0.62, 0.9, 0.55, 44), metal);
+    hub.rotation.x = Math.PI / 2;
+    hub.position.z = -0.05;
+    turbo.add(hub);
+
+    // Curved compressor blades arranged radially
+    var bladeGeo = new THREE.BoxGeometry(0.11, 1.5, 0.55);
+    var N = 11;
+    for (var i = 0; i < N; i++) {
+      var pivot = new THREE.Group();
+      var blade = new THREE.Mesh(bladeGeo, metal);
+      blade.position.y = 0.92;
+      blade.rotation.z = 0.55;  // blade pitch (twist)
+      blade.rotation.x = 0.38;  // blade sweep
+      pivot.add(blade);
+      pivot.rotation.z = (i / N) * Math.PI * 2;
+      turbo.add(pivot);
+    }
+
+    turbo.rotation.x = -0.35;
+    scene.add(turbo);
+
+    // Lighting tuned for chrome with brand-coloured rims
+    scene.add(new THREE.HemisphereLight(0x8aa0ff, 0x2a0a12, 0.7));
+    scene.add(new THREE.AmbientLight(0x404048, 0.5));
+    var key = new THREE.PointLight(0xffffff, 1.3, 60); key.position.set(4, 5, 7); scene.add(key);
+    var redFill = new THREE.PointLight(0xff2d55, 2.6, 60); redFill.position.set(-5, -2, 4); scene.add(redFill);
+    var coolRim = new THREE.PointLight(0x3a6bff, 1.6, 60); coolRim.position.set(0, 3, -6); scene.add(coolRim);
+
+    function resize() {
+      var r = canvas.getBoundingClientRect();
+      var w = Math.max(1, r.width), h = Math.max(1, r.height);
+      renderer.setSize(w, h, false);
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+      renderer.render(scene, camera);
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    if (reduceMotion) return; // static render only — honour reduced motion
+
+    var tx = 0, ty = 0, rx = 0, ry = 0;
+    window.addEventListener('mousemove', function (e) {
+      tx = (e.clientX / window.innerWidth - 0.5);
+      ty = (e.clientY / window.innerHeight - 0.5);
+    });
+
+    var running = true;
+    document.addEventListener('visibilitychange', function () {
+      running = !document.hidden;
+      if (running) requestAnimationFrame(spin);
+    });
+
+    function spin() {
+      if (!running) return;
+      turbo.rotation.z += 0.012;
+      rx += (ty * 0.5 - rx) * 0.06;
+      ry += (tx * 0.6 - ry) * 0.06;
+      turbo.rotation.x = -0.35 + rx;
+      turbo.rotation.y = ry;
+      renderer.render(scene, camera);
+      requestAnimationFrame(spin);
+    }
+    requestAnimationFrame(spin);
+  }
+
   // Soft round glow sprite drawn on a canvas (no external texture needed).
   function makeSprite(THREE) {
     var c = document.createElement('canvas');
@@ -270,6 +374,7 @@
     initMagnetic();
     initReveal();
     initBoostField();
+    initTurbo();
   }
 
   if (document.readyState === 'loading') {
