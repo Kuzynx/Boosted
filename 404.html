@@ -40,6 +40,14 @@
     </style>
 </head>
 <body>
+    <!-- Immersive background -->
+    <div class="bg-atmosphere" aria-hidden="true"></div>
+    <canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+    <!-- Custom cursor -->
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-ring" aria-hidden="true"></div>
+
     <nav>
         <a href="/">Home</a>
         <a href="/about.html">About</a>
@@ -48,9 +56,13 @@
     </nav>
 
     <main class="nf">
-        <h1 class="gradient-heading">404</h1>
-        <p>This road doesn't lead anywhere. Let's get you back on track.</p>
-        <a class="btn" href="/">Back to Home</a>
+        <h1 class="gradient-heading reveal">404</h1>
+        <p class="reveal">This road doesn't lead anywhere. Let's get you back on track.</p>
+        <a class="btn magnetic reveal" href="/">Back to Home</a>
     </main>
+
+    <!-- Three.js (WebGL boost field). Site is static; this loads in the visitor's browser. -->
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script defer src="/assets/immersive.js"></script>
 </body>
 </html>

@@ -81,6 +81,11 @@
 <body>
     <a href="#main" class="skip-link">Skip to content</a>
 
+    <!-- Immersive background + custom cursor -->
+    <div class="bg-atmosphere" aria-hidden="true"></div>
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-ring" aria-hidden="true"></div>
+
     <nav>
         <a href="/">Home</a>
         <a href="/about.html">About</a>
@@ -89,15 +94,15 @@
     </nav>
 
     <header class="legal-hero">
-        <h1 class="gradient-heading">Terms of Service</h1>
+        <h1 class="gradient-heading reveal">Terms of Service</h1>
     </header>
 
     <main id="main" class="legal-body">
-        <p>
+        <p class="reveal">
             Read the full Terms of Service governing your use of the Boosted app and website.
             The document opens in a new tab.
         </p>
-        <a class="legal-cta" href="https://app.termly.io/policy-viewer/policy.html?policyUUID=b0fa91fa-14d7-43f0-bbd0-9d790932d02e" target="_blank" rel="noopener">View Terms of Service</a>
+        <a class="legal-cta magnetic reveal" href="https://app.termly.io/policy-viewer/policy.html?policyUUID=b0fa91fa-14d7-43f0-bbd0-9d790932d02e" target="_blank" rel="noopener">View Terms of Service</a>
     </main>
 
     <footer>
@@ -113,5 +118,6 @@
         </div>
     </footer>
 
+    <script defer src="/assets/immersive.js"></script>
 </body>
 </html>
