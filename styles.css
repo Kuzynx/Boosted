@@ -131,9 +131,64 @@ footer {
 }
 .store-badges img { height: 52px; width: auto; display: block; }
 
+/* ===== Immersive layer (shared across pages) ===== */
+
+/* WebGL background canvas + base atmosphere glow */
+#bg-canvas {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    display: block;
+}
+.bg-atmosphere {
+    position: fixed;
+    inset: 0;
+    z-index: -3;
+    background:
+        radial-gradient(60% 50% at 50% 0%, #2a0a12 0%, transparent 60%),
+        radial-gradient(50% 60% at 80% 90%, #1a0610 0%, transparent 70%),
+        var(--bg);
+}
+
+/* Custom cursor */
+.cursor-dot, .cursor-ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 6000;
+    border-radius: 50%;
+    will-change: transform;
+    opacity: 0;
+}
+.has-custom-cursor .cursor-dot,
+.has-custom-cursor .cursor-ring { opacity: 1; }
+.cursor-dot { width: 7px; height: 7px; margin: -3.5px 0 0 -3.5px; background: var(--accent); }
+.cursor-ring {
+    width: 40px; height: 40px; margin: -20px 0 0 -20px;
+    border: 1px solid rgba(255,255,255,0.5);
+    transition: width .25s ease, height .25s ease, margin .25s ease, border-color .25s ease, background-color .25s ease;
+}
+.has-custom-cursor.cursor-hover .cursor-ring { width: 64px; height: 64px; margin: -32px 0 0 -32px; border-color: var(--accent); background: rgba(255,45,85,0.08); }
+.has-custom-cursor.cursor-down .cursor-ring { width: 30px; height: 30px; margin: -15px 0 0 -15px; }
+@media (hover: hover) and (pointer: fine) {
+    .has-custom-cursor, .has-custom-cursor * { cursor: none; }
+}
+
+/* Scroll reveal utility */
+.reveal-ready .reveal { opacity: 0; transform: translateY(38px); }
+.reveal { transition: opacity 0.9s cubic-bezier(0.2,0.8,0.2,1), transform 0.9s cubic-bezier(0.2,0.8,0.2,1); }
+.reveal.in { opacity: 1; transform: none; }
+
+/* Magnetic hover helper */
+.magnetic { transition: transform 0.25s cubic-bezier(0.2,0.8,0.2,1); }
+
 @media (prefers-reduced-motion: reduce) {
     * {
         animation: none !important;
         transition: none !important;
     }
+    .reveal { opacity: 1 !important; transform: none !important; }
 }

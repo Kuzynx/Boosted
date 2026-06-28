@@ -123,6 +123,14 @@
 <body>
     <a href="#main" class="skip-link">Skip to content</a>
 
+    <!-- Immersive background -->
+    <div class="bg-atmosphere" aria-hidden="true"></div>
+    <canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+    <!-- Custom cursor -->
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-ring" aria-hidden="true"></div>
+
     <nav>
         <a href="/">Home</a>
         <a href="/about.html">About</a>
@@ -131,19 +139,19 @@
     </nav>
 
     <div class="support-hero">
-        <h1 class="gradient-heading">Support</h1>
-        <p>Boosted Platforms LLC</p>
+        <h1 class="gradient-heading reveal">Support</h1>
+        <p class="reveal">Boosted Platforms LLC</p>
     </div>
 
     <main id="main" class="contact-container">
-        <div class="contact-card">
+        <div class="contact-card reveal">
             <span class="subtitle">Official Channel</span>
             <h3>Email</h3>
             <a href="mailto:support@boostedapp.org" class="contact-link">support@boostedapp.org</a>
             <p>Direct access for technical support, partnership inquiries, and bug reporting. Response time is typically within 24 hours.</p>
         </div>
 
-        <div class="contact-card">
+        <div class="contact-card reveal">
             <span class="subtitle">Direct Line</span>
             <h3>Phone & SMS</h3>
             <a href="tel:7606282136" class="contact-link">(760) 628-2136</a>
@@ -164,5 +172,8 @@
         </div>
     </footer>
 
+    <!-- Three.js (WebGL boost field). Site is static; this loads in the visitor's browser. -->
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script defer src="/assets/immersive.js"></script>
 </body>
 </html>

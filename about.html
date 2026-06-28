@@ -114,6 +114,14 @@
 <body>
     <a href="#main" class="skip-link">Skip to content</a>
 
+    <!-- Immersive background -->
+    <div class="bg-atmosphere" aria-hidden="true"></div>
+    <canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+    <!-- Custom cursor -->
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-ring" aria-hidden="true"></div>
+
     <nav>
         <a href="/">Home</a>
         <a href="/about.html">About</a>
@@ -122,29 +130,29 @@
     </nav>
 
     <header class="about-header">
-        <h1 class="gradient-heading">Our Story</h1>
+        <h1 class="gradient-heading reveal">Our Story</h1>
     </header>
 
     <main id="main" class="mission-section">
-        <span class="mission-label">The Mission</span>
-        <p>
+        <span class="mission-label reveal">The Mission</span>
+        <p class="reveal">
             Boosted was born from a simple frustration: automotive culture is thriving, but the information connecting us is scattered across dead forums and social media noise.
         </p>
-        <p>
+        <p class="reveal">
             We set out to build a centralized digital heartbeat for the community. A place where every enthusiast—from JDM purists to American Muscle collectors—can find their crew and fuel their passion without the static.
         </p>
     </main>
 
     <section class="values-grid">
-        <div class="value-card">
+        <div class="value-card reveal">
             <h3>Community First</h3>
             <p>We build tools specifically designed for the way car enthusiasts interact, organize, and host events.</p>
         </div>
-        <div class="value-card">
+        <div class="value-card reveal">
             <h3>Modern Access</h3>
             <p>No more digging through old threads. Real-time maps and instant notifications keep you in the loop.</p>
         </div>
-        <div class="value-card">
+        <div class="value-card reveal">
             <h3>Inclusive Culture</h3>
             <p>Whether it's a local coffee meet or a massive rally, Boosted is home for everything on wheels.</p>
         </div>
@@ -163,5 +171,8 @@
         </div>
     </footer>
 
+    <!-- Three.js (WebGL boost field). Site is static; this loads in the visitor's browser. -->
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script defer src="/assets/immersive.js"></script>
 </body>
 </html>
