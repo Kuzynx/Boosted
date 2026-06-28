@@ -1,0 +1,31 @@
+{
+  "hosting": {
+    "public": ".",
+    "ignore": [
+      "firebase.json",
+      "README.md",
+      ".git/**",
+      ".github/**",
+      ".claude/**",
+      ".vscode/**",
+      ".gitignore",
+      ".nojekyll",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      { "source": "/meet/**", "function": "shareLink" },
+      { "source": "/post/**", "function": "shareLink" },
+      { "source": "/user/**", "function": "shareLink" }
+    ],
+    "headers": [
+      {
+        "source": "/.well-known/apple-app-site-association",
+        "headers": [{ "key": "Content-Type", "value": "application/json" }]
+      },
+      {
+        "source": "/.well-known/assetlinks.json",
+        "headers": [{ "key": "Content-Type", "value": "application/json" }]
+      }
+    ]
+  }
+}
