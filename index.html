@@ -99,42 +99,23 @@
             padding: 140px 20px 80px;
         }
 
-        /* 3D turbo centerpiece */
-        .turbo-stage {
-            position: relative;
-            width: min(360px, 82vw);
-            height: min(360px, 82vw);
-            margin: 0 auto 8px;
-            opacity: 0;
-            transform: scale(0.92);
-            transition: opacity 1s ease 0.1s, transform 1.1s cubic-bezier(0.2,0.8,0.2,1) 0.1s;
-        }
-        body.loaded .turbo-stage { opacity: 1; transform: scale(1); }
-        #turbo-canvas {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            display: block;
-            filter: drop-shadow(0 0 40px rgba(255, 45, 85, 0.35));
-        }
-        /* Static logo fallback — shown only when WebGL is unavailable */
-        .turbo-stage .turbo-logo {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 42%;
-            height: 42%;
-            transform: translate(-50%, -50%);
-            border-radius: 28px;
+        /* Logo centerpiece */
+        .turbo-logo {
+            width: 160px;
+            height: 160px;
+            margin: 0 auto 30px;
+            border-radius: 38px;
             background-color: #000;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            filter: drop-shadow(0 0 24px rgba(255, 45, 85, 0.45));
+            filter: drop-shadow(0 0 34px rgba(255, 45, 85, 0.5));
             object-fit: cover;
+            display: block;
+            opacity: 0;
+            transition: opacity 1s ease 0.1s;
             animation: pulse 4s infinite ease-in-out;
         }
-        .turbo-stage.webgl-on .turbo-logo { display: none; }
-        @keyframes pulse { 0%, 100% { transform: translate(-50%,-50%) scale(1); } 50% { transform: translate(-50%,-50%) scale(1.05); } }
+        body.loaded .turbo-logo { opacity: 1; }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
 
         .hero h1 {
             font-size: clamp(3.2rem, 14vw, 9rem);
@@ -203,6 +184,45 @@
             animation: scrollLine 1.8s infinite;
         }
         @keyframes scrollLine { 0% { transform: scaleY(0); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } 50.1% { transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
+
+        /* Animated accent line under the wordmark */
+        .title-underline {
+            display: block;
+            width: 0;
+            height: 4px;
+            margin: 18px auto 0;
+            border-radius: 4px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            transition: width 1.2s cubic-bezier(0.2,0.8,0.2,1) 0.6s;
+        }
+        body.loaded .title-underline { width: min(280px, 60vw); }
+
+        /* Kinetic marquee strip */
+        .marquee {
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            padding: 20px 0;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            background: rgba(0,0,0,0.35);
+        }
+        .marquee-track {
+            display: flex;
+            width: max-content;
+            animation: marquee 26s linear infinite;
+        }
+        .marquee:hover .marquee-track { animation-play-state: paused; }
+        .marquee-track span {
+            white-space: nowrap;
+            font-size: clamp(1.4rem, 4.5vw, 2.6rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(255,255,255,0.4);
+        }
+        @keyframes marquee { to { transform: translateX(-50%); } }
 
         /* Solid backdrop so content below the hero is readable over the fixed canvas */
         .content {
@@ -287,9 +307,8 @@
         .faq p { color: var(--text-secondary); margin: 16px 0 0; }
 
         @media (prefers-reduced-motion: reduce) {
-            .turbo-stage, .hero .tag, .hero .store-badges, .hero h1 .char, .scroll-cue { opacity: 1 !important; transform: none !important; }
-            .turbo-stage .turbo-logo { animation: none; }
-            .loader-mark { animation: none; }
+            .turbo-logo, .hero .tag, .hero .store-badges, .hero h1 .char, .scroll-cue, .title-underline { opacity: 1 !important; transform: none !important; }
+            .turbo-logo, .loader-mark { animation: none; }
         }
     </style>
 
@@ -356,15 +375,14 @@
         <a href="/about.html">About</a>
         <a href="/applications.html">Apps</a>
         <a href="/contact.html">Contact</a>
+        <a class="nav-cta" href="/applications.html">Get the App</a>
     </nav>
 
     <main id="main">
     <section class="hero">
-        <div class="turbo-stage">
-            <canvas id="turbo-canvas" aria-hidden="true"></canvas>
-            <img src="/assets/logo-256.png" alt="Boosted app icon" class="turbo-logo" width="132" height="132" />
-        </div>
+        <img src="/assets/logo-256.png" alt="Boosted app icon" class="turbo-logo magnetic" data-magnetic="0.25" width="160" height="160" />
         <h1 class="gradient-heading" data-split>BOOSTED</h1>
+        <span class="title-underline" aria-hidden="true"></span>
         <p class="tag">The digital heartbeat of automotive culture. Discover local meets, host events, and find your crew.</p>
         <div class="store-badges center">
             <a class="magnetic" href="https://apps.apple.com/us/app/boosted-car-community/id6758597611" target="_blank" rel="noopener noreferrer">
@@ -378,6 +396,12 @@
     </section>
 
     <div class="content">
+    <div class="marquee" aria-hidden="true">
+        <div class="marquee-track">
+            <span>Find Meets&nbsp;—&nbsp;Share Builds&nbsp;—&nbsp;Host Events&nbsp;—&nbsp;Join Crews&nbsp;—&nbsp;Boost Culture&nbsp;—&nbsp;</span>
+            <span>Find Meets&nbsp;—&nbsp;Share Builds&nbsp;—&nbsp;Host Events&nbsp;—&nbsp;Join Crews&nbsp;—&nbsp;Boost Culture&nbsp;—&nbsp;</span>
+        </div>
+    </div>
     <section class="features">
         <div class="feature-card reveal">
             <span class="num">01</span>
