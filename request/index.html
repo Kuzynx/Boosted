@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Request a Site Edit — Boosted Platforms</title>
+    <meta name="description" content="Care-plan clients: request an edit to your website — new hours, prices, photos, or content. Boosted Platforms responds within 1–2 business days." />
+    <meta name="robots" content="noindex, follow" />
+    <link rel="canonical" href="https://boostedapp.org/request/" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png" />
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#FF2D55" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+    <style>
+        .req-hero {
+            padding: 120px 20px 30px;
+            text-align: center;
+            background: radial-gradient(circle at top, #2a0a10 0%, #050505 70%);
+        }
+        .req-hero h1 { font-size: clamp(2.2rem, 7vw, 3.8rem); letter-spacing: -2px; margin: 0; }
+        .req-hero .eyebrow { color: var(--accent); font-weight: 800; text-transform: uppercase; letter-spacing: 3px; font-size: 0.78rem; margin: 0 0 14px; }
+        .req-hero p { color: var(--text-secondary); max-width: 560px; margin: 18px auto 0; }
+
+        .form-wrap { max-width: 640px; margin: 0 auto; padding: 40px 20px 120px; position: relative; z-index: 1; }
+        .card {
+            background: rgba(18,18,18,0.75);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 22px;
+            padding: 34px;
+        }
+        .field { margin-bottom: 18px; }
+        .field.row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        label { display: block; font-size: 0.72rem; color: #888; text-transform: uppercase; letter-spacing: 1px; font-weight: 800; margin-bottom: 7px; }
+        label .req { color: var(--accent); }
+        input, textarea {
+            width: 100%; background: #1a1a1a; border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 11px; padding: 13px 14px; color: #fff;
+            font-family: inherit; font-size: 0.95rem;
+        }
+        input:focus, textarea:focus { outline: none; border-color: var(--accent); }
+        textarea { resize: vertical; min-height: 130px; }
+        .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+        .submit {
+            width: 100%;
+            background: var(--accent); color: #fff; border: none;
+            padding: 16px; border-radius: 50px; font-family: inherit;
+            font-weight: 800; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px;
+            cursor: pointer; box-shadow: 0 10px 30px rgba(255,45,85,0.3); transition: 0.3s;
+        }
+        .submit:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 15px 40px rgba(255,45,85,0.5); }
+        .submit:disabled { opacity: 0.6; cursor: default; }
+
+        .formnote { color: #666; font-size: 0.8rem; text-align: center; margin-top: 16px; }
+        .errline { color: #ff6b81; font-size: 0.88rem; margin-top: 14px; text-align: center; min-height: 1em; }
+
+        .success { display: none; text-align: center; padding: 20px 10px; }
+        .success.show { display: block; }
+        .success .check {
+            width: 70px; height: 70px; border-radius: 50%; margin: 0 auto 20px;
+            background: rgba(16,185,129,0.15); border: 1px solid #10B981; color: #10B981;
+            display: flex; align-items: center; justify-content: center; font-size: 34px; font-weight: 900;
+        }
+        .success h2 { margin: 0 0 10px; font-size: 1.6rem; font-weight: 900; }
+        .success p { color: var(--text-secondary); margin: 0 0 24px; }
+        .success a.btn {
+            display: inline-block; background: #1a1a1a; border: 1px solid rgba(255,255,255,0.1);
+            color: #fff; padding: 13px 28px; border-radius: 50px; text-decoration: none; font-weight: 700;
+        }
+        .success a.btn:hover { border-color: var(--accent); }
+
+        @media (max-width: 540px) { .field.row { grid-template-columns: 1fr; } }
+    </style>
+    <!-- Privacy-friendly analytics (no cookies). -->
+    <script defer data-domain="boostedapp.org" src="https://plausible.io/js/script.outbound-links.js"></script>
+</head>
+<body>
+    <a href="#main" class="skip-link">Skip to content</a>
+    <div class="bg-atmosphere" aria-hidden="true"></div>
+    <canvas id="bg-canvas" aria-hidden="true"></canvas>
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-ring" aria-hidden="true"></div>
+
+    <nav>
+        <a href="/">Home</a>
+        <a href="/about.html">About</a>
+        <a href="/applications.html">Apps</a>
+        <a href="/services.html">Services</a>
+        <a href="/contact.html">Contact</a>
+        <a class="nav-cta" href="/contact.html">Start a Project</a>
+    </nav>
+
+    <header class="req-hero">
+        <p class="eyebrow reveal">Care Plan Clients</p>
+        <h1 class="gradient-heading reveal">Request a Site Edit</h1>
+        <p class="reveal">Need new hours, prices, photos, or a content tweak? Send it over and I'll take care of it — typically within 1–2 business days.</p>
+    </header>
+
+    <main id="main" class="form-wrap">
+        <div class="card">
+            <form id="reqForm" novalidate>
+                <div class="field row">
+                    <div>
+                        <label for="business">Business name <span class="req">*</span></label>
+                        <input id="business" name="business" required maxlength="120" autocomplete="organization" />
+                    </div>
+                    <div>
+                        <label for="name">Your name</label>
+                        <input id="name" name="name" maxlength="120" autocomplete="name" />
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="email">Email <span class="req">*</span></label>
+                    <input id="email" name="email" type="email" required maxlength="200" autocomplete="email" placeholder="So I can confirm when it's done" />
+                </div>
+                <div class="field">
+                    <label for="details">What needs changing? <span class="req">*</span></label>
+                    <textarea id="details" name="details" required maxlength="4000" placeholder="e.g. Update Saturday hours to 9–3, swap the hero photo for the new one I'm linking below, and add a 'Catering' service."></textarea>
+                </div>
+                <div class="field">
+                    <label for="link">Link to photos / files (optional)</label>
+                    <input id="link" name="link" maxlength="500" placeholder="Google Drive, Dropbox, or image URL" />
+                </div>
+                <!-- Honeypot: real people leave this blank. -->
+                <div class="hp" aria-hidden="true">
+                    <label for="company">Company</label>
+                    <input id="company" name="company" tabindex="-1" autocomplete="off" />
+                </div>
+                <button type="submit" class="submit" id="submitBtn">Send Request</button>
+                <div class="errline" id="err" role="alert"></div>
+                <p class="formnote">Your details are only used to action and confirm this edit.</p>
+            </form>
+
+            <div class="success" id="success">
+                <div class="check" aria-hidden="true">✓</div>
+                <h2>Request received</h2>
+                <p>Thanks — I've got it and will follow up within 1–2 business days at the email you gave.</p>
+                <a class="btn" href="/">Back to home</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-socials">
+            <a href="https://www.instagram.com/boosted_platforms?igsh=NTc4MTIwNjQ2YQ==" target="_blank" rel="noopener">Instagram</a>
+            <a href="https://www.tiktok.com/@boostedplatforms?_r=1&_t=ZT-92TZxG6OG0N" target="_blank" rel="noopener">TikTok</a>
+        </div>
+        <span class="llc-name">BOOSTED PLATFORMS LLC</span><br />
+        &copy; 2026 All rights reserved.
+        <div class="footer-legal" style="margin-top:16px;">
+            <a href="/privacy.html">Privacy Policy</a> &bull; <a href="/terms.html">Terms of Service</a>
+        </div>
+    </footer>
+
+    <script defer src="/assets/three.min.js"></script>
+    <script defer src="/assets/immersive.js"></script>
+
+    <script type="module">
+        import { firebaseConfig, COLLECTIONS, SUPPORT_EMAIL, FIREBASE_SDK, firebaseReady }
+            from '/assets/app-config.js';
+
+        const form = document.getElementById('reqForm');
+        const errEl = document.getElementById('err');
+        const btn = document.getElementById('submitBtn');
+
+        function val(id) { return document.getElementById(id).value.trim(); }
+        function showSuccess() {
+            form.style.display = 'none';
+            document.getElementById('success').classList.add('show');
+        }
+
+        async function sendToFirestore(data) {
+            const [{ initializeApp }, fs] = await Promise.all([
+                import(`${FIREBASE_SDK}/firebase-app.js`),
+                import(`${FIREBASE_SDK}/firebase-firestore.js`)
+            ]);
+            const app = initializeApp(firebaseConfig);
+            const db = fs.getFirestore(app);
+            await fs.addDoc(fs.collection(db, COLLECTIONS.requests), {
+                business: data.business,
+                name: data.name,
+                email: data.email,
+                details: data.details,
+                link: data.link,
+                status: 'open',
+                createdAt: fs.serverTimestamp()
+            });
+        }
+
+        // Fallback when Firebase isn't configured yet: open the visitor's email app.
+        function sendByEmail(data) {
+            const subject = `Site edit request — ${data.business}`;
+            const body =
+                `Business: ${data.business}\n` +
+                `Name: ${data.name || '—'}\n` +
+                `Email: ${data.email}\n\n` +
+                `Request:\n${data.details}\n\n` +
+                `Files/links: ${data.link || '—'}`;
+            window.location.href =
+                `mailto:${SUPPORT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        }
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            errEl.textContent = '';
+
+            // Honeypot — silently succeed for bots.
+            if (val('company')) { showSuccess(); return; }
+
+            const data = {
+                business: val('business'),
+                name: val('name'),
+                email: val('email'),
+                details: val('details'),
+                link: val('link')
+            };
+            if (!data.business || !data.email || !data.details) {
+                errEl.textContent = 'Please fill in business name, email, and what needs changing.';
+                return;
+            }
+            if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(data.email)) {
+                errEl.textContent = 'That email address looks off — mind double-checking it?';
+                return;
+            }
+
+            btn.disabled = true;
+            btn.textContent = 'Sending…';
+            try {
+                if (firebaseReady()) {
+                    await sendToFirestore(data);
+                    showSuccess();
+                } else {
+                    sendByEmail(data);
+                    btn.disabled = false;
+                    btn.textContent = 'Send Request';
+                }
+            } catch (err) {
+                console.error(err);
+                errEl.textContent = 'Something went wrong sending that. Email ' + SUPPORT_EMAIL + ' and I\'ll sort it out.';
+                btn.disabled = false;
+                btn.textContent = 'Send Request';
+            }
+        });
+    </script>
+</body>
+</html>

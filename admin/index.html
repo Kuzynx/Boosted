@@ -24,9 +24,7 @@
         * { box-sizing: border-box; }
         body {
             margin: 0;
-            background:
-                radial-gradient(60% 50% at 50% 0%, #1c0810 0%, transparent 60%),
-                var(--bg);
+            background: radial-gradient(60% 50% at 50% 0%, #1c0810 0%, transparent 60%), var(--bg);
             color: #fff;
             font-family: 'Inter', sans-serif;
             line-height: 1.5;
@@ -36,120 +34,98 @@
 
         .wrap { max-width: 1100px; margin: 0 auto; padding: 28px 20px 80px; }
 
+        /* Cloud/local visibility toggles */
+        #authbar { display: none; }
+        body.mode-cloud #authbar { display: flex; }
+        #migrateBtn { display: none; }
+        body.mode-cloud #migrateBtn { display: inline-block; }
+        #modeBanner { display: none; }
+
+        /* Login screen */
+        #loginScreen { display: none; min-height: 100vh; align-items: center; justify-content: center; padding: 24px; }
+        #loginScreen.show, body.mode-cloud #loginScreen { display: flex; }
+        .login-card {
+            width: 100%; max-width: 380px; background: var(--card);
+            border: 1px solid var(--line); border-radius: 22px; padding: 36px; text-align: center;
+        }
+        .login-card img { width: 52px; height: 52px; border-radius: 14px; margin-bottom: 16px; }
+        .login-card h1 { font-size: 1.3rem; margin: 0 0 4px; font-weight: 900; }
+        .login-card .sub { color: var(--muted); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; margin-bottom: 26px; }
+        .login-card label { text-align: left; }
+        .login-card input { margin-bottom: 14px; }
+        .login-card button { width: 100%; }
+        #loginErr { color: #ff6b81; font-size: 0.85rem; min-height: 1em; margin-top: 12px; }
+
         /* Header */
         .topbar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 16px;
-            padding-bottom: 22px;
-            border-bottom: 1px solid var(--line);
+            display: flex; align-items: center; justify-content: space-between;
+            flex-wrap: wrap; gap: 16px; padding-bottom: 22px; border-bottom: 1px solid var(--line);
         }
         .brand { display: flex; align-items: center; gap: 12px; }
         .brand img { width: 40px; height: 40px; border-radius: 11px; }
         .brand h1 { font-size: 1.25rem; margin: 0; font-weight: 900; letter-spacing: -0.5px; }
         .brand .sub { display: block; font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; }
-        .top-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+        .top-actions { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+        #authbar { gap: 10px; align-items: center; font-size: 0.82rem; color: var(--muted); }
+        #whoami { font-weight: 600; color: #ccc; }
 
         button, .btn {
-            font-family: inherit;
-            font-weight: 700;
-            font-size: 0.85rem;
-            border-radius: 10px;
-            border: 1px solid var(--line);
-            background: #1a1a1a;
-            color: #fff;
-            padding: 10px 16px;
-            cursor: pointer;
-            transition: 0.2s;
+            font-family: inherit; font-weight: 700; font-size: 0.85rem; border-radius: 10px;
+            border: 1px solid var(--line); background: #1a1a1a; color: #fff;
+            padding: 10px 16px; cursor: pointer; transition: 0.2s;
         }
         button:hover, .btn:hover { border-color: var(--accent); transform: translateY(-1px); }
         button.primary, .btn.primary { background: var(--accent); border-color: var(--accent); box-shadow: 0 6px 18px rgba(255,45,85,0.25); }
         button.ghost { background: transparent; }
         button.danger:hover { border-color: #ef4444; color: #ef4444; }
+        button:disabled { opacity: 0.6; cursor: default; transform: none; }
+
+        .mode-note {
+            margin: 18px 0 0; padding: 13px 16px; border-radius: 12px;
+            background: rgba(245,166,35,0.08); border: 1px solid rgba(245,166,35,0.25);
+            color: #e8c894; font-size: 0.82rem;
+        }
+        .mode-note a { color: var(--warn); }
 
         /* Stats */
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-            gap: 14px;
-            margin: 24px 0;
-        }
-        .stat {
-            background: var(--card);
-            border: 1px solid var(--line);
-            border-radius: 16px;
-            padding: 20px;
-        }
+        .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 14px; margin: 24px 0; }
+        .stat { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 20px; }
         .stat .label { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; }
         .stat .value { font-size: 2rem; font-weight: 900; letter-spacing: -1px; margin-top: 6px; }
         .stat .value.accent { color: var(--accent); }
 
         /* Controls */
         .controls { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-bottom: 18px; }
-        .search {
-            flex: 1;
-            min-width: 200px;
-            background: var(--card);
-            border: 1px solid var(--line);
-            border-radius: 10px;
-            padding: 11px 14px;
-            color: #fff;
-            font-family: inherit;
-            font-size: 0.9rem;
-        }
+        .search { flex: 1; min-width: 200px; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 11px 14px; color: #fff; font-family: inherit; font-size: 0.9rem; }
         .search:focus { outline: none; border-color: var(--accent); }
         .filters { display: flex; gap: 8px; flex-wrap: wrap; }
-        .chip {
-            padding: 8px 14px;
-            border-radius: 999px;
-            border: 1px solid var(--line);
-            background: transparent;
-            color: var(--text-secondary);
-            font-size: 0.78rem;
-            font-weight: 700;
-            cursor: pointer;
-        }
+        .chip { padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line); background: transparent; color: var(--text-secondary); font-size: 0.78rem; font-weight: 700; cursor: pointer; }
         .chip.active { background: var(--accent); color: #fff; border-color: var(--accent); }
 
         /* Client list */
         .list { display: grid; gap: 14px; }
-        .client {
-            background: var(--card);
-            border: 1px solid var(--line);
-            border-radius: 18px;
-            padding: 22px;
-        }
+        .client { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 22px; }
         .client-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap; }
         .client-title { font-size: 1.2rem; font-weight: 800; margin: 0; }
         .client-contact { color: var(--text-secondary); font-size: 0.88rem; margin-top: 2px; }
         .client-contact a { word-break: break-all; }
 
-        .badge {
-            display: inline-flex; align-items: center; gap: 6px;
-            font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;
-            padding: 5px 11px; border-radius: 999px; border: 1px solid;
-        }
+        .badge { display: inline-flex; align-items: center; gap: 6px; font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; padding: 5px 11px; border-radius: 999px; border: 1px solid; }
         .badge .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
         .badge.Active     { color: var(--ok);    border-color: rgba(16,185,129,0.4);  background: rgba(16,185,129,0.1); }
         .badge.Building   { color: var(--accent);border-color: rgba(255,45,85,0.4);   background: rgba(255,45,85,0.1); }
         .badge.Paused     { color: var(--warn);  border-color: rgba(245,166,35,0.4);  background: rgba(245,166,35,0.1); }
         .badge.Cancelled  { color: var(--muted); border-color: rgba(107,114,128,0.4); background: rgba(107,114,128,0.1); }
 
-        .meta-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 14px;
-            margin: 18px 0;
-            padding: 16px 0;
-            border-top: 1px solid var(--line);
-            border-bottom: 1px solid var(--line);
-        }
+        .meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px; margin: 18px 0; padding: 16px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
         .meta .k { font-size: 0.68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; }
         .meta .v { font-size: 0.95rem; font-weight: 600; margin-top: 3px; }
 
-        /* Edits stepper */
+        .bill { font-size: 0.78rem; font-weight: 800; }
+        .bill-Active { color: var(--ok); } .bill-Trialing { color: var(--accent); }
+        .bill-Pastdue { color: var(--warn); } .bill-Canceled { color: var(--muted); }
+        .bill-none { color: var(--muted); font-weight: 600; }
+
         .edits { display: inline-flex; align-items: center; gap: 8px; }
         .edits button { padding: 2px 10px; font-size: 1rem; line-height: 1; border-radius: 8px; }
         .edits .count { font-weight: 800; min-width: 42px; text-align: center; }
@@ -160,13 +136,10 @@
 
         .client-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
 
-        /* Requests */
+        /* Per-client edit-request log */
         .requests { margin-top: 14px; }
         .requests h4 { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin: 0 0 8px; }
-        .req {
-            display: flex; align-items: center; gap: 10px;
-            font-size: 0.88rem; padding: 7px 0; border-top: 1px dashed var(--line);
-        }
+        .req { display: flex; align-items: center; gap: 10px; font-size: 0.88rem; padding: 7px 0; border-top: 1px dashed var(--line); }
         .req:first-of-type { border-top: none; }
         .req.done .req-text { text-decoration: line-through; color: var(--muted); }
         .req-text { flex: 1; }
@@ -177,51 +150,64 @@
         .req-add input { flex: 1; background: #1a1a1a; border: 1px solid var(--line); border-radius: 8px; padding: 8px 12px; color: #fff; font-family: inherit; font-size: 0.85rem; }
         .req-add input:focus { outline: none; border-color: var(--accent); }
 
-        .empty { text-align: center; padding: 80px 20px; color: var(--muted); }
+        /* Incoming requests inbox */
+        .section-head { display: flex; align-items: center; gap: 12px; margin: 44px 0 16px; }
+        .section-head h2 { font-size: 1.2rem; font-weight: 900; margin: 0; }
+        .section-head .count { font-size: 0.72rem; font-weight: 800; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; }
+        .inbox { display: grid; gap: 12px; }
+        .inq { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 18px; }
+        .inq.done { opacity: 0.55; }
+        .inq-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+        .inq-head strong { font-size: 1.02rem; }
+        .inq-meta { color: var(--text-secondary); font-size: 0.85rem; margin-top: 2px; }
+        .inq-details { margin-top: 10px; font-size: 0.92rem; white-space: pre-wrap; }
+        .inq-link { margin-top: 8px; font-size: 0.85rem; word-break: break-all; }
+        .inq-actions { display: flex; gap: 8px; margin-top: 14px; }
+        .inq-actions button { padding: 7px 13px; font-size: 0.8rem; }
+
+        .empty { text-align: center; padding: 60px 20px; color: var(--muted); }
         .empty h3 { color: #fff; font-weight: 800; }
 
         /* Modal */
-        .overlay {
-            position: fixed; inset: 0; background: rgba(0,0,0,0.7);
-            display: none; align-items: flex-start; justify-content: center;
-            padding: 40px 16px; overflow-y: auto; z-index: 100;
-            backdrop-filter: blur(4px);
-        }
+        .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.7); display: none; align-items: flex-start; justify-content: center; padding: 40px 16px; overflow-y: auto; z-index: 100; backdrop-filter: blur(4px); }
         .overlay.open { display: flex; }
-        .modal {
-            background: #111; border: 1px solid var(--line); border-radius: 22px;
-            width: 100%; max-width: 560px; padding: 30px;
-        }
+        .modal { background: #111; border: 1px solid var(--line); border-radius: 22px; width: 100%; max-width: 560px; padding: 30px; }
         .modal h2 { margin: 0 0 20px; font-size: 1.4rem; font-weight: 900; letter-spacing: -0.5px; }
         .field { margin-bottom: 16px; }
         .field.row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
         label { display: block; font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 6px; }
-        input, select, textarea {
-            width: 100%; background: #1a1a1a; border: 1px solid var(--line);
-            border-radius: 10px; padding: 11px 13px; color: #fff;
-            font-family: inherit; font-size: 0.92rem;
-        }
+        input, select, textarea { width: 100%; background: #1a1a1a; border: 1px solid var(--line); border-radius: 10px; padding: 11px 13px; color: #fff; font-family: inherit; font-size: 0.92rem; }
         input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); }
         textarea { resize: vertical; min-height: 80px; }
-        /* Native checkboxes must keep their intrinsic size — the width:100% above is for form fields only. */
+        /* Native checkboxes must keep their intrinsic size — width:100% above is for form fields only. */
         input[type="checkbox"] { width: auto; flex: 0 0 auto; padding: 0; min-height: 0; accent-color: var(--accent); cursor: pointer; }
         .modal-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 24px; }
 
-        .notice {
-            margin-top: 40px; padding: 16px 18px; border-radius: 12px;
-            background: rgba(255,45,85,0.06); border: 1px solid rgba(255,45,85,0.2);
-            color: var(--text-secondary); font-size: 0.82rem;
-        }
+        .notice { margin-top: 40px; padding: 16px 18px; border-radius: 12px; background: rgba(255,45,85,0.06); border: 1px solid rgba(255,45,85,0.2); color: var(--text-secondary); font-size: 0.82rem; }
         .notice strong { color: #fff; }
 
-        @media (max-width: 560px) {
-            .field.row { grid-template-columns: 1fr; }
-            .stat .value { font-size: 1.6rem; }
-        }
+        @media (max-width: 560px) { .field.row { grid-template-columns: 1fr; } .stat .value { font-size: 1.6rem; } }
     </style>
 </head>
 <body>
-    <div class="wrap">
+
+    <!-- ===== Login (cloud mode only) ===== -->
+    <div id="loginScreen">
+        <form class="login-card" id="loginForm">
+            <img src="/assets/logo-256.png" alt="" />
+            <h1>Client Manager</h1>
+            <div class="sub">Boosted Platforms</div>
+            <label for="loginEmail">Email</label>
+            <input id="loginEmail" type="email" autocomplete="username" required />
+            <label for="loginPass">Password</label>
+            <input id="loginPass" type="password" autocomplete="current-password" required />
+            <button type="submit" class="primary" id="loginBtn">Sign in</button>
+            <div id="loginErr" role="alert"></div>
+        </form>
+    </div>
+
+    <!-- ===== Dashboard ===== -->
+    <div class="wrap" id="app" style="display:none;">
         <div class="topbar">
             <div class="brand">
                 <img src="/assets/logo-256.png" alt="" />
@@ -231,12 +217,18 @@
                 </div>
             </div>
             <div class="top-actions">
+                <span id="authbar"><span id="whoami"></span><button class="ghost" id="signOutBtn">Sign out</button></span>
+                <button class="ghost" id="migrateBtn" title="Upload clients saved in this browser to your account">↑ Import from this browser</button>
                 <button class="ghost" id="resetMonthBtn" title="Set this month's edit counters back to 0 for every client">↺ Reset month</button>
                 <button class="ghost" id="importBtn">Import</button>
                 <button class="ghost" id="exportBtn">Export</button>
                 <button class="primary" id="addBtn">+ Add Client</button>
                 <input type="file" id="importFile" accept="application/json" hidden />
             </div>
+        </div>
+
+        <div class="mode-note" id="modeBanner">
+            <strong>Local mode.</strong> Running in this browser only — no login, no cloud sync. To enable a login and access from any device (plus the incoming request inbox), connect Firebase — see <strong>SETUP.md</strong>. Use <strong>Export</strong> meanwhile to back up.
         </div>
 
         <div class="stats">
@@ -259,8 +251,17 @@
 
         <div class="list" id="list"></div>
 
-        <div class="notice">
-            <strong>Private tool.</strong> Client data is stored only in this browser (localStorage) — it isn't synced or backed up to a server. Use <strong>Export</strong> regularly to save a backup, and <strong>Import</strong> to restore or move to another device. Want this on a real database with a login and from any device, or recurring $100/mo Stripe billing wired in? Those are the next steps up from here.
+        <!-- Incoming edit requests (from /request/) -->
+        <div id="inboxSection">
+            <div class="section-head">
+                <h2>Incoming Requests</h2>
+                <span class="count" id="inboxCount"></span>
+            </div>
+            <div class="inbox" id="inbox"></div>
+        </div>
+
+        <div class="notice" id="storageNotice">
+            <strong>Backups:</strong> use <strong>Export</strong> to download a JSON snapshot and <strong>Import</strong> to restore. In local mode your data lives only in this browser.
         </div>
     </div>
 
@@ -324,6 +325,10 @@
                     </div>
                 </div>
                 <div class="field">
+                    <label for="f_billing">Billing status</label>
+                    <select id="f_billing"></select>
+                </div>
+                <div class="field">
                     <label for="f_notes">Notes</label>
                     <textarea id="f_notes" placeholder="Domain registrar, hosting login location, preferences…"></textarea>
                 </div>
@@ -335,275 +340,6 @@
         </div>
     </div>
 
-    <script>
-    (function () {
-        const KEY = 'boosted_clients_v1';
-        const STATUSES = ['Building', 'Active', 'Paused', 'Cancelled'];
-        let clients = load();
-        let filter = 'all';
-        let query = '';
-
-        function load() {
-            try { return JSON.parse(localStorage.getItem(KEY)) || []; }
-            catch (e) { return []; }
-        }
-        function save() { localStorage.setItem(KEY, JSON.stringify(clients)); }
-        function uid() { return Date.now().toString(36) + Math.random().toString(36).slice(2, 7); }
-        function esc(s) {
-            return String(s == null ? '' : s).replace(/[&<>"']/g, c => (
-                { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]
-            ));
-        }
-        function money(n) { return '$' + (Number(n) || 0).toLocaleString('en-US'); }
-
-        function nextRenewal(day) {
-            if (!day) return '—';
-            const d = Number(day);
-            const now = new Date();
-            let next = new Date(now.getFullYear(), now.getMonth(), d);
-            if (next < new Date(now.getFullYear(), now.getMonth(), now.getDate())) {
-                next = new Date(now.getFullYear(), now.getMonth() + 1, d);
-            }
-            return next.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-        }
-
-        // ---- Stats ----
-        function renderStats() {
-            const active = clients.filter(c => c.status === 'Active');
-            document.getElementById('stTotal').textContent = clients.length;
-            document.getElementById('stActive').textContent = active.length;
-            document.getElementById('stMrr').textContent = money(active.reduce((s, c) => s + (Number(c.fee) || 0), 0));
-            document.getElementById('stEdits').textContent = clients.reduce((s, c) => s + (Number(c.editsUsed) || 0), 0);
-        }
-
-        // ---- List ----
-        function renderList() {
-            const list = document.getElementById('list');
-            const q = query.trim().toLowerCase();
-            const rows = clients.filter(c => {
-                if (filter !== 'all' && c.status !== filter) return false;
-                if (!q) return true;
-                return [c.business, c.contact, c.email].some(v => (v || '').toLowerCase().includes(q));
-            });
-
-            if (!rows.length) {
-                list.innerHTML = '<div class="empty"><h3>' +
-                    (clients.length ? 'No clients match your search.' : 'No clients yet') + '</h3><p>' +
-                    (clients.length ? 'Try a different filter or search term.' : 'Add your first client to start tracking care plans, renewals, and edit requests.') +
-                    '</p></div>';
-                return;
-            }
-
-            list.innerHTML = rows.map(c => {
-                const allowance = Number(c.allowance) || 0;
-                const used = Number(c.editsUsed) || 0;
-                const full = allowance && used >= allowance;
-                const reqs = (c.requests || []);
-                const openReqs = reqs.filter(r => !r.done).length;
-                return `
-                <div class="client" data-id="${c.id}">
-                    <div class="client-head">
-                        <div>
-                            <h3 class="client-title">${esc(c.business)}</h3>
-                            <div class="client-contact">
-                                ${c.contact ? esc(c.contact) : ''}${c.contact && (c.email || c.phone) ? ' · ' : ''}
-                                ${c.email ? `<a href="mailto:${esc(c.email)}">${esc(c.email)}</a>` : ''}${c.email && c.phone ? ' · ' : ''}
-                                ${c.phone ? esc(c.phone) : ''}
-                            </div>
-                        </div>
-                        <span class="badge ${c.status}"><span class="dot"></span>${c.status}</span>
-                    </div>
-
-                    <div class="meta-grid">
-                        <div class="meta"><div class="k">Website</div><div class="v">${c.site ? `<a href="${esc(c.site)}" target="_blank" rel="noopener">${esc(c.site.replace(/^https?:\/\//, ''))}</a>` : '—'}</div></div>
-                        <div class="meta"><div class="k">Fee</div><div class="v">${money(c.fee)}/mo</div></div>
-                        <div class="meta"><div class="k">Next renewal</div><div class="v">${nextRenewal(c.billingDay)}</div></div>
-                        <div class="meta">
-                            <div class="k">Edits this month</div>
-                            <div class="v edits">
-                                <button data-act="edit-minus">−</button>
-                                <span class="count ${full ? 'full' : ''}">${used} / ${allowance || '∞'}</span>
-                                <button data-act="edit-plus">+</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="notes">${esc(c.notes)}</div>
-
-                    <div class="requests">
-                        <h4>Edit requests${openReqs ? ` · ${openReqs} open` : ''}</h4>
-                        ${reqs.length ? reqs.map(r => `
-                            <div class="req ${r.done ? 'done' : ''}" data-rid="${r.id}">
-                                <input type="checkbox" data-act="req-toggle" ${r.done ? 'checked' : ''} />
-                                <span class="req-text">${esc(r.text)}</span>
-                                <span class="req-date">${esc(r.date)}</span>
-                                <span class="x" data-act="req-del" title="Delete request">×</span>
-                            </div>`).join('') : '<div class="req-date">No requests logged.</div>'}
-                        <div class="req-add">
-                            <input type="text" data-act="req-input" placeholder="Log a new edit request…" />
-                            <button data-act="req-add">Add</button>
-                        </div>
-                    </div>
-
-                    <div class="client-actions">
-                        <button data-act="edit">Edit</button>
-                        <button class="danger" data-act="delete">Delete</button>
-                    </div>
-                </div>`;
-            }).join('');
-        }
-
-        function render() { renderStats(); renderList(); }
-
-        // ---- Modal ----
-        const overlay = document.getElementById('overlay');
-        const form = document.getElementById('clientForm');
-        function openModal(client) {
-            document.getElementById('modalTitle').textContent = client ? 'Edit Client' : 'Add Client';
-            document.getElementById('f_id').value = client ? client.id : '';
-            document.getElementById('f_business').value = client ? client.business || '' : '';
-            document.getElementById('f_contact').value = client ? client.contact || '' : '';
-            document.getElementById('f_status').value = client ? client.status || 'Building' : 'Building';
-            document.getElementById('f_email').value = client ? client.email || '' : '';
-            document.getElementById('f_phone').value = client ? client.phone || '' : '';
-            document.getElementById('f_site').value = client ? client.site || '' : '';
-            document.getElementById('f_fee').value = client ? (client.fee ?? 100) : 100;
-            document.getElementById('f_billingDay').value = client ? client.billingDay || '' : '';
-            document.getElementById('f_allowance').value = client ? (client.allowance ?? 4) : 4;
-            document.getElementById('f_start').value = client ? client.start || '' : '';
-            document.getElementById('f_notes').value = client ? client.notes || '' : '';
-            overlay.classList.add('open');
-            document.getElementById('f_business').focus();
-        }
-        function closeModal() { overlay.classList.remove('open'); form.reset(); }
-
-        form.addEventListener('submit', function (e) {
-            e.preventDefault();
-            const id = document.getElementById('f_id').value;
-            const data = {
-                business: document.getElementById('f_business').value.trim(),
-                contact: document.getElementById('f_contact').value.trim(),
-                status: document.getElementById('f_status').value,
-                email: document.getElementById('f_email').value.trim(),
-                phone: document.getElementById('f_phone').value.trim(),
-                site: document.getElementById('f_site').value.trim(),
-                fee: Number(document.getElementById('f_fee').value) || 0,
-                billingDay: document.getElementById('f_billingDay').value,
-                allowance: Number(document.getElementById('f_allowance').value) || 0,
-                start: document.getElementById('f_start').value,
-                notes: document.getElementById('f_notes').value.trim()
-            };
-            if (id) {
-                const c = clients.find(x => x.id === id);
-                if (c) Object.assign(c, data);
-            } else {
-                clients.unshift(Object.assign({ id: uid(), editsUsed: 0, requests: [] }, data));
-            }
-            save(); render(); closeModal();
-        });
-
-        // ---- Event delegation on list ----
-        document.getElementById('list').addEventListener('click', function (e) {
-            const card = e.target.closest('.client');
-            if (!card) return;
-            const id = card.getAttribute('data-id');
-            const c = clients.find(x => x.id === id);
-            if (!c) return;
-            const act = e.target.getAttribute('data-act');
-
-            if (act === 'edit') return openModal(c);
-            if (act === 'delete') {
-                if (confirm('Delete ' + (c.business || 'this client') + '? This cannot be undone.')) {
-                    clients = clients.filter(x => x.id !== id); save(); render();
-                }
-                return;
-            }
-            if (act === 'edit-plus') { c.editsUsed = (Number(c.editsUsed) || 0) + 1; save(); render(); return; }
-            if (act === 'edit-minus') { c.editsUsed = Math.max(0, (Number(c.editsUsed) || 0) - 1); save(); render(); return; }
-            if (act === 'req-add') {
-                const input = card.querySelector('[data-act="req-input"]');
-                const text = input.value.trim();
-                if (!text) return;
-                c.requests = c.requests || [];
-                c.requests.push({ id: uid(), text: text, date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric' }), done: false });
-                save(); render(); return;
-            }
-            if (act === 'req-del') {
-                const rid = e.target.closest('.req').getAttribute('data-rid');
-                c.requests = (c.requests || []).filter(r => r.id !== rid); save(); render(); return;
-            }
-        });
-        // Enter key adds a request
-        document.getElementById('list').addEventListener('keydown', function (e) {
-            if (e.key === 'Enter' && e.target.getAttribute('data-act') === 'req-input') {
-                e.preventDefault();
-                e.target.closest('.req-add').querySelector('[data-act="req-add"]').click();
-            }
-        });
-        // Toggle request done
-        document.getElementById('list').addEventListener('change', function (e) {
-            if (e.target.getAttribute('data-act') !== 'req-toggle') return;
-            const card = e.target.closest('.client');
-            const c = clients.find(x => x.id === card.getAttribute('data-id'));
-            const rid = e.target.closest('.req').getAttribute('data-rid');
-            const r = (c.requests || []).find(x => x.id === rid);
-            if (r) { r.done = e.target.checked; save(); render(); }
-        });
-
-        // ---- Controls ----
-        document.getElementById('addBtn').addEventListener('click', () => openModal(null));
-        document.getElementById('cancelBtn').addEventListener('click', closeModal);
-        overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
-        document.addEventListener('keydown', e => { if (e.key === 'Escape' && overlay.classList.contains('open')) closeModal(); });
-
-        document.getElementById('search').addEventListener('input', e => { query = e.target.value; renderList(); });
-        document.getElementById('filters').addEventListener('click', e => {
-            const chip = e.target.closest('.chip'); if (!chip) return;
-            document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
-            chip.classList.add('active');
-            filter = chip.getAttribute('data-status'); renderList();
-        });
-
-        document.getElementById('resetMonthBtn').addEventListener('click', () => {
-            if (!clients.length) return;
-            if (confirm("Reset this month's edit counters to 0 for all clients?")) {
-                clients.forEach(c => c.editsUsed = 0); save(); render();
-            }
-        });
-
-        // ---- Export / import ----
-        document.getElementById('exportBtn').addEventListener('click', () => {
-            const blob = new Blob([JSON.stringify(clients, null, 2)], { type: 'application/json' });
-            const a = document.createElement('a');
-            a.href = URL.createObjectURL(blob);
-            a.download = 'boosted-clients-' + new Date().toISOString().slice(0, 10) + '.json';
-            a.click();
-            URL.revokeObjectURL(a.href);
-        });
-        document.getElementById('importBtn').addEventListener('click', () => document.getElementById('importFile').click());
-        document.getElementById('importFile').addEventListener('change', function (e) {
-            const file = e.target.files[0]; if (!file) return;
-            const reader = new FileReader();
-            reader.onload = () => {
-                try {
-                    const data = JSON.parse(reader.result);
-                    if (!Array.isArray(data)) throw new Error('Not a client list');
-                    const mode = clients.length ? prompt('Type "merge" to add these to your current clients, or "replace" to overwrite everything.', 'merge') : 'replace';
-                    if (mode === null) return;
-                    const incoming = data.map(c => Object.assign({ id: uid(), editsUsed: 0, requests: [] }, c, { id: c.id || uid() }));
-                    clients = mode === 'replace' ? incoming : clients.concat(incoming);
-                    save(); render();
-                    alert('Imported ' + incoming.length + ' client(s).');
-                } catch (err) {
-                    alert('Could not import: ' + err.message);
-                }
-                e.target.value = '';
-            };
-            reader.readAsText(file);
-        });
-
-        render();
-    })();
-    </script>
+    <script type="module" src="/assets/client-manager.js"></script>
 </body>
 </html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thank You — Boosted Platforms</title>
+    <meta name="robots" content="noindex" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png" />
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+    <style>
+        .ty {
+            min-height: 80vh;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            text-align: center; padding: 100px 20px;
+            background: radial-gradient(circle at top, #2a0a10 0%, #050505 70%);
+        }
+        .ty .check {
+            width: 84px; height: 84px; border-radius: 50%; margin-bottom: 26px;
+            background: rgba(16,185,129,0.15); border: 1px solid #10B981; color: #10B981;
+            display: flex; align-items: center; justify-content: center; font-size: 42px; font-weight: 900;
+        }
+        .ty h1 { font-size: clamp(2.2rem, 8vw, 3.6rem); margin: 0; letter-spacing: -2px; }
+        .ty p { color: var(--text-secondary); font-size: 1.15rem; max-width: 520px; margin: 16px 0 36px; }
+        .ty a.btn {
+            background: var(--accent); color: #fff; padding: 16px 40px; border-radius: 50px;
+            text-decoration: none; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;
+            box-shadow: 0 10px 30px rgba(255,45,85,0.3); transition: 0.3s;
+        }
+        .ty a.btn:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(255,45,85,0.5); }
+        .ty .sub { font-size: 0.9rem; color: #666; margin-top: 22px; }
+        .ty .sub a { color: var(--accent); }
+    </style>
+</head>
+<body>
+    <div class="bg-atmosphere" aria-hidden="true"></div>
+    <canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+    <nav>
+        <a href="/">Home</a>
+        <a href="/about.html">About</a>
+        <a href="/applications.html">Apps</a>
+        <a href="/services.html">Services</a>
+        <a href="/contact.html">Contact</a>
+        <a class="nav-cta" href="/contact.html">Start a Project</a>
+    </nav>
+
+    <main class="ty">
+        <div class="check" aria-hidden="true">✓</div>
+        <h1 class="gradient-heading">You're all set</h1>
+        <p>Your care plan is active — thank you. I'll keep your site hosted, fresh, and online, and you'll get a confirmation email from Stripe with your receipt.</p>
+        <a class="btn" href="/services.html">Back to Services</a>
+        <p class="sub">Need an edit already? <a href="/request/">Request one here</a>.</p>
+    </main>
+
+    <footer>
+        <div class="footer-socials">
+            <a href="https://www.instagram.com/boosted_platforms?igsh=NTc4MTIwNjQ2YQ==" target="_blank" rel="noopener">Instagram</a>
+            <a href="https://www.tiktok.com/@boostedplatforms?_r=1&_t=ZT-92TZxG6OG0N" target="_blank" rel="noopener">TikTok</a>
+        </div>
+        <span class="llc-name">BOOSTED PLATFORMS LLC</span><br />
+        &copy; 2026 All rights reserved.
+    </footer>
+
+    <script defer src="/assets/three.min.js"></script>
+    <script defer src="/assets/immersive.js"></script>
+</body>
+</html>

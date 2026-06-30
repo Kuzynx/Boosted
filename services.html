@@ -379,10 +379,13 @@
                     <li>Basic uptime check<span>Routine monitoring so issues get caught before they cost you visitors.</span></li>
                 </ul>
 
-                <a class="plan-cta magnetic" href="/contact.html" data-magnetic="0.2">Get Started</a>
+                <a class="plan-cta magnetic" id="getStarted" href="/contact.html" data-magnetic="0.2">Get Started</a>
             </div>
 
             <p class="plan-disclaimer">The initial website build is quoted separately, based on the size and scope of your project. The $100/month care plan is optional and begins after launch.</p>
+            <p class="plan-disclaimer" style="margin-top:10px;">
+                Already a client? <a href="/request/" style="color:var(--accent);">Request a site edit</a><span id="billingSep" hidden> &middot; <a href="#" id="manageBilling" style="color:var(--accent);" target="_blank" rel="noopener">Manage billing</a></span>
+            </p>
         </section>
 
         <section class="process" aria-label="How it works">
@@ -428,5 +431,21 @@
     <!-- Three.js (self-hosted so it always loads — powers the boost field). -->
     <script defer src="/assets/three.min.js"></script>
     <script defer src="/assets/immersive.js"></script>
+
+    <!-- Wire the care-plan CTA to Stripe when links are configured; otherwise
+         fall back to the contact page (the default href). -->
+    <script type="module">
+        import { STRIPE } from '/assets/app-config.js';
+        if (STRIPE.PAYMENT_LINK) {
+            const cta = document.getElementById('getStarted');
+            cta.href = STRIPE.PAYMENT_LINK;
+            cta.setAttribute('target', '_blank');
+            cta.setAttribute('rel', 'noopener');
+        }
+        if (STRIPE.PORTAL_LINK) {
+            document.getElementById('manageBilling').href = STRIPE.PORTAL_LINK;
+            document.getElementById('billingSep').hidden = false;
+        }
+    </script>
 </body>
 </html>
